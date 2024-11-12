@@ -1,0 +1,11 @@
+*.dll
+*.exe
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.log
+*.rar
+*.zip
+*.sql
+*.sqlite

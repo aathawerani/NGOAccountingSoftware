@@ -13,96 +13,66 @@
         <TabControl x:Name="tabControl" Margin="10,10,0,0" TabStripPlacement="Left" Grid.ColumnSpan="2">
             <TabItem Header="Rent" FontSize="20" Margin="-2,-2,0,-2">
                 <Grid x:Name="Rent" Background="#FFE5E5E5" Margin="0,-5,0,5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition MinHeight="20" MaxHeight="40"/>
-                        <RowDefinition MinHeight="20" MaxHeight="40"/>
-                        <RowDefinition MinHeight="20" MaxHeight="40"/>
-                        <RowDefinition MinHeight="20" MaxHeight="40"/>
-                        <RowDefinition MinHeight="20" MaxHeight="40"/>
-                        <RowDefinition MinHeight="20" MaxHeight="40"/>
-                        <RowDefinition MinHeight="20" MaxHeight="40"/>
-                        <RowDefinition MinHeight="20" MaxHeight="40"/>
-                        <RowDefinition MinHeight="20" MaxHeight="40"/>
-                        <RowDefinition MinHeight="35"/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="0">
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label" Content="Trust" />
-                        <ComboBox Margin="10,1,1,1" MinWidth="145" FontSize="20" x:Name="Rent_Trust_comboBox" SelectionChanged="Rent_Trust_comboBox_SelectionChanged"/>
-                        <Label Margin="20,1,1,1" FontSize="20" x:Name="label_Copy" Content="Plot" />
-                        <ComboBox Margin="10,1,1,1" MinWidth="98" FontSize="20" x:Name="Rent_Plot_comboBox" SelectionChanged="Rent_Plot_comboBox_SelectionChanged"/>
-                        <Label Margin="20,1,1,1" FontSize="20" x:Name="label2" Content="Type" />
-                        <ComboBox Margin="10,1,1,1" MinWidth="74" FontSize="20" x:Name="Rent_Space_comboBox" SelectionChanged="Rent_Space_comboBox_SelectionChanged"/>
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label21" Content="No." />
-                        <ComboBox Margin="10,1,1,1" MinWidth="51" FontSize="20" x:Name="Rent_SpaceNo_comboBox" SelectionChanged="Rent_SpaceNo_comboBox_SelectionChanged"/>
-                        <Label Margin="20,1,1,1" FontSize="20" x:Name="label_Copy28" Content="Serial" />
-                        <TextBox Margin="10,1,1,1" MinWidth="65" FontSize="20" x:Name="Rent_SerialNo_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.No}" />
-                        <Label Margin="20,1,1,1" FontSize="20" x:Name="label1" Content="Date" />
-                        <DatePicker Margin="10,1,1,1" MinWidth="160" FontSize="20" x:Name="Rent_Date" SelectedDate="{Binding SelectedItem.Date, ElementName=Accounts_Grid}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1">
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label4" Content="Name" />
-                        <TextBox Margin="10,1,20,1" MinWidth="1150" FontSize="20" x:Name="Rent_Name_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.Name}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="2">
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label7" Content="From" />
-                    <ComboBox Margin="10,1,1,1" MinWidth="65" FontSize="20" x:Name="Rent_FromM_comboBox" SelectionChanged="CacluateNumMonths"/>
-                    <ComboBox Margin="10,1,1,1" MinWidth="70" FontSize="20" x:Name="Rent_FromY_comboBox" SelectionChanged="CacluateNumMonths"/>
-                    <Label Margin="20,1,1,1" FontSize="20" x:Name="label11" Content="Months" />
-                    <ComboBox Margin="10,1,1,1" MinWidth="50" FontSize="20" x:Name="Rent_NumMonths_comboBox" SelectionChanged="Rent_NumMonths_comboBox_SelectionChanged" />
-                    <Label Margin="20,1,1,1" FontSize="20" x:Name="label7_Copy" Content="To" />
-                    <ComboBox Margin="10,1,1,1" MinWidth="65" FontSize="20" x:Name="Rent_ToM_comboBox" SelectionChanged="CacluateNumMonths"/>
-                    <ComboBox Margin="10,1,1,1" MinWidth="70" FontSize="20" x:Name="Rent_ToY_comboBox" SelectionChanged="CacluateNumMonths"/>
-                    <Label Margin="20,1,1,1" FontSize="20" x:Name="label_Copy37" Content="CNIC" />
-                    <TextBox Margin="10,1,1,1" MinWidth="173" FontSize="20" x:Name="Rent_CNIC_textBox" />
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label5_Copy2" Content="Rent" />
-                        <TextBox Margin="10,1,1,1" MinWidth="60" FontSize="20" x:Name="Rent_MonthlyRent_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.MRent}" TextAlignment="Right" TextChanged="CalculateRent"/>
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label5_Copy3" Content="Water" />
-                        <TextBox Margin="10,1,1,1" MinWidth="60" FontSize="20" x:Name="Rent_MonthlyWater_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WCharges}" TextAlignment="Right" TextChanged="CalculateRent"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="3">
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label7_Copy1" Content="Particulars" />
-                    <Label Margin="500,1,1,1" VerticalAlignment="Center" FontSize="20" x:Name="label11_Copy" Content="Payment Mode" />
-                        <ComboBox Margin="10,1,1,1" MinWidth="100" FontSize="20" x:Name="Rent_PaymentMode" />
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label_Copy36" Content="Cheque No." />
-                        <TextBox Margin="10,1,1,1" MinWidth="196" FontSize="20" x:Name="Rent_BankReference_textBox" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="4">
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label7_Copy2" Content="Rent" />
-                    <TextBox Margin="10,1,1,1" MinWidth="440" FontSize="20" x:Name="Rent_RentParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RPart}" TextChanged="Rent_RentParticulars_textBox_TextChanged"/>
-                    <Label Margin="20,1,1,1" FontSize="20" x:Name="label10_Copy1" Content="Month" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="5">
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label7_Copy5" Content="Water" />
-                    <TextBox Margin="10,1,1,1" VerticalAlignment="Center" MinWidth="440" FontSize="20" x:Name="Rent_WaterParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WPart}" />
-                    <Label Margin="10,1,1,1" FontSize="20" x:Name="label10" Content="Period" />
-                    <TextBox Margin="10,1,1,1" MinWidth="60" FontSize="20" x:Name="Rent_TotalRent_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.TotalRent}" TextAlignment="Right" TextChanged="Rent_TotalRent_textBox_TextChanged"/>
-                    <TextBox Margin="10,1,1,1" MinWidth="60" FontSize="20" x:Name="Rent_TotalWater_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.TotalWCharges}" TextAlignment="Right" TextChanged="Rent_TotalWater_textBox_TextChanged"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="6">
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label7_Copy8" Content="Arears Particulars" />
-                    <Label Margin="360,1,1,1" FontSize="20" x:Name="label10_Copy" Content="Arears" />
-                    <TextBox Margin="10,1,1,1" MinWidth="60" FontSize="20" x:Name="Rent_RentArears_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RArears}" TextAlignment="Right" TextChanged="Rent_RentArears_textBox_TextChanged"/>
-                    <TextBox Margin="10,1,1,1" MinWidth="60" FontSize="20" x:Name="Rent_WaterArears_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WArears}" TextAlignment="Right" TextChanged="Rent_WaterArears_textBox_TextChanged"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="7">
-                        <Label Margin="10,1,1,1" FontSize="20" x:Name="label7_Copy6" Content="Rent" />
-                    <TextBox Margin="10,1,1,1" MinWidth="440" FontSize="20" x:Name="Rent_RentArearsParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RAPart}" />
-                    <Label Margin="10,1,1,1" FontSize="20" x:Name="label8" Content="Total" />
-                    <TextBox Margin="10,1,1,1" MinWidth="120" FontSize="20" x:Name="Rent_TotalAmount_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.Total}" TextAlignment="Right" />
-                    <Button Margin="10,1,1,1" MinWidth="97" x:Name="Rent_Updatebutton" Content="Update" Click="Rent_Updatebutton_Click"/>
-                    <Button Margin="10,1,1,1" MinWidth="97" x:Name="Rent_Clear" Content="Clear" Click="Rent_Clear_Click" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="8">
-                        <Label Margin="10,1,1,1" VerticalAlignment="Center" FontSize="20" x:Name="label7_Copy7" Content="Water" />
-                    <TextBox Margin="10,1,1,1" MinWidth="440" FontSize="20" x:Name="Rent_WaterArearsParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WAPart}" />
-                    <Label Margin="10,1,1,1" FontSize="20" x:Name="label8_Copy" Content="Paid" />
-                    <TextBox Margin="10,1,1,1" MinWidth="120" FontSize="20" x:Name="Rent_TotalPaid_textBox" Text="{Binding SelectedItem.Total, ElementName=Rent_Grid}" />
-                    <Button Margin="10,1,1,1" MinWidth="97" x:Name="Rent_Printbutton" Content="Print" Click="Rent_Printbutton_Click"/>
-                    <Button Margin="10,1,1,1" MinWidth="97" x:Name="Rent_button" Content="Generate" Click="Rent_button_Click"/>
+                    <Label Margin="10,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="50" FontSize="20" x:Name="label" Content="Trust" />
+                    <ComboBox Margin="65,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140" MinWidth="145" FontSize="20" x:Name="Rent_Trust_comboBox" SelectionChanged="Rent_Trust_comboBox_SelectionChanged"/>
+                    <Label Margin="220,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="50" FontSize="20" x:Name="label_Copy" Content="Plot" />
+                    <ComboBox Margin="270,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="90" FontSize="20" x:Name="Rent_Plot_comboBox" SelectionChanged="Rent_Plot_comboBox_SelectionChanged"/>
+                    <Label Margin="370,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="50" FontSize="20" x:Name="label2" Content="Type" />
+                    <ComboBox Margin="420,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80" FontSize="20" x:Name="Rent_Space_comboBox" SelectionChanged="Rent_Space_comboBox_SelectionChanged"/>
+                    <Label Margin="510,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40" FontSize="20" x:Name="label21" Content="No." />
+                    <ComboBox Margin="550,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" MinWidth="51" FontSize="20" x:Name="Rent_SpaceNo_comboBox" SelectionChanged="Rent_SpaceNo_comboBox_SelectionChanged"/>
+                    <Label Margin="620,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="label_Copy28" Content="Serial" />
+                    <TextBox Margin="680,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_SerialNo_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.No}" />
+                    <Label Margin="790,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label1" Content="Date" />
+                    <DatePicker Margin="850,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_Date" SelectedDate="{Binding SelectedItem.Date, ElementName=Accounts_Grid}" />
+                    <Label Margin="10,60,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="70" FontSize="20" x:Name="label4" Content="Name" />
+                    <TextBox Margin="80,60,20,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="800" FontSize="20" x:Name="Rent_Name_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.Name}"/>
+                    <Label Margin="10,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="label7" Content="From" />
+                    <ComboBox Margin="70,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_FromM_comboBox" SelectionChanged="CacluateNumMonths"/>
+                    <ComboBox Margin="140,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_FromY_comboBox" SelectionChanged="CacluateNumMonths"/>
+                    <Label Margin="210,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80" FontSize="20" x:Name="label11" Content="Months" />
+                    <ComboBox Margin="290,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_NumMonths_comboBox" SelectionChanged="Rent_NumMonths_comboBox_SelectionChanged" />
+                    <Label Margin="360,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40" FontSize="20" x:Name="label7_Copy" Content="To" />
+                    <ComboBox Margin="400,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_ToM_comboBox" SelectionChanged="CacluateNumMonths"/>
+                    <ComboBox Margin="470,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_ToY_comboBox" SelectionChanged="CacluateNumMonths"/>
+                    <Label Margin="1020,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="label_Copy37" Content="CNIC" />
+                    <TextBox Margin="1090,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_CNIC_textBox" />
+                    <Label Margin="700,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="label5_Copy2" Content="Rent" />
+                    <TextBox Margin="670,150,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_MonthlyRent_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.MRent}" TextAlignment="Right" TextChanged="CalculateRent"/>
+                    <Label Margin="800,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="70" FontSize="20" x:Name="label5_Copy3" Content="Water" />
+                    <TextBox Margin="790,150,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_MonthlyWater_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WCharges}" TextAlignment="Right" TextChanged="CalculateRent"/>
+                    <Label Margin="10,160,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy1" Content="Particulars" />
+                    <Label Margin="920,450,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label11_Copy" Content="Payment Mode" />
+                    <ComboBox Margin="1090,450,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_PaymentMode" />
+                    <Label Margin="580,450,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label_Copy36" Content="Cheque No." />
+                    <TextBox Margin="750,450,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_BankReference_textBox" />
+                    <Label Margin="10,210,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy2" Content="Rent" />
+                    <TextBox Margin="70,210,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="500" FontSize="20" x:Name="Rent_RentParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RPart}" TextChanged="Rent_RentParticulars_textBox_TextChanged"/>
+                    <Label Margin="600,150,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label10_Copy1" Content="Month" />
+                    <Label Margin="10,260,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="70" FontSize="20" x:Name="label7_Copy5" Content="Water" />
+                    <TextBox Margin="70,260,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="500" FontSize="20" x:Name="Rent_WaterParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WPart}" />
+                    <Label Margin="600,200,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label10" Content="Period" />
+                    <TextBox Margin="670,200,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_TotalRent_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.TotalRent}" TextAlignment="Right" TextChanged="Rent_TotalRent_textBox_TextChanged"/>
+                    <TextBox Margin="790,200,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_TotalWater_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.TotalWCharges}" TextAlignment="Right" TextChanged="Rent_TotalWater_textBox_TextChanged"/>
+                    <Label Margin="10,310,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy8" Content="Arears Particulars" />
+                    <Label Margin="600,250,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label10_Copy" Content="Arears" />
+                    <TextBox Margin="670,250,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100"  FontSize="20" x:Name="Rent_RentArears_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RArears}" TextAlignment="Right" TextChanged="Rent_RentArears_textBox_TextChanged"/>
+                    <TextBox Margin="790,250,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100"  FontSize="20" x:Name="Rent_WaterArears_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WArears}" TextAlignment="Right" TextChanged="Rent_WaterArears_textBox_TextChanged"/>
+                    <Label Margin="10,350,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy6" Content="Rent" />
+                    <TextBox Margin="70,350,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="500" FontSize="20" x:Name="Rent_RentArearsParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RAPart}" />
+                    <Label Margin="600,300,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label8" Content="Total" />
+                    <TextBox Margin="670,300,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_TotalAmount_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.Total}" TextAlignment="Right" />
+                    <Button Margin="750,500,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" x:Name="Rent_Updatebutton" Content="Update" Click="Rent_Updatebutton_Click"/>
+                    <Button Margin="580,500,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" x:Name="Rent_Clear" Content="Clear" Click="Rent_Clear_Click" />
+                    <Label Margin="10,400,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy7" Content="Water" />
+                    <TextBox Margin="70,400,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="500" FontSize="20" x:Name="Rent_WaterArearsParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WAPart}" />
+                    <Label Margin="600,350,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label8_Copy" Content="Paid" />
+                    <TextBox Margin="670,350,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_TotalPaid_textBox" Text="{Binding SelectedItem.Total, ElementName=Rent_Grid}" />
+                    <Button Margin="920,500,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" x:Name="Rent_Printbutton" Content="Print" Click="Rent_Printbutton_Click"/>
+                    <Button Margin="1090,500,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" x:Name="Rent_button" Content="Generate" Click="Rent_button_Click"/>
                     <TextBox HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="121" FontSize="20" Visibility="Hidden" x:Name="Rent_ID_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.ID}" />
-                    </StackPanel>
                     <TextBox Visibility="Hidden" x:Name="Rent_ID_textBox1" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.ID}" />
-                    <DataGrid Grid.Row="9" x:Name="Rent_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="Rent_Grid_SelectionChanged">
+                    <DataGrid HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="100" Width="1000" x:Name="Rent_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="Rent_Grid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="No" Binding="{Binding Path=No}"/>
                             <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>

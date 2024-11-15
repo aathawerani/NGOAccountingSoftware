@@ -9,3 +9,5 @@
 *.zip
 *.sql
 *.sqlite
+*.TMP
+packages/

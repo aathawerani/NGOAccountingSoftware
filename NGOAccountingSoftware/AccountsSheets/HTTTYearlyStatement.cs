@@ -10,7 +10,7 @@ namespace TrustApplication
     {
         public HTTTYearlyStatement()
         {
-            accountingSheets.Add("GFIS", new ExcelSheet("IS", 82, 4, new string[] { "" });
+            accountingSheets.Add("GFIS", new ExcelSheet("IS", 82, 4, new string[] { "" }));
             accountingSheets.Add("SSCIS", new ExcelSheet("IS", 89, 4, new string[] { "" }));
             accountingSheets.Add("DSCIS", new ExcelSheet("IS", 90, 4, new string[] { "" }));
             accountingSheets.Add("CASHIS", new ExcelSheet("IS", 94, 4, new string[] { "" }));

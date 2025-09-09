@@ -6,7 +6,6 @@
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="900">
     <UserControl.Resources>
-        <!-- Card that hosts a label + input; width tuned for up to 5 columns on wide screens -->
         <Style x:Key="FormCard" TargetType="Border">
             <Setter Property="Padding" Value="10"/>
             <Setter Property="Margin" Value="8"/>
@@ -14,7 +13,7 @@
             <Setter Property="BorderBrush" Value="#DDD"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="Width" Value="320"/>  <!-- <= Controls per row = floor(availableWidth / 320) -->
+            <Setter Property="Width" Value="320"/>
         </Style>
 
         <Style x:Key="LabelText" TargetType="TextBlock">
@@ -23,12 +22,10 @@
         </Style>
     </UserControl.Resources>
 
-    <!-- Vertical scrolling; content wraps horizontally -->
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <DockPanel LastChildFill="True" Margin="8">
             <TextBlock DockPanel.Dock="Top" Text="{Binding Title}" FontSize="18" FontWeight="Bold" Margin="8,0,8,12"/>
 
-            <!-- WrapPanel gives 1..N columns responsively. Each field is a 320px card. -->
             <WrapPanel ItemHeight="Auto" ItemWidth="320">
                 <!-- Trust -->
                 <Border Style="{StaticResource FormCard}">
@@ -96,8 +93,8 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Particulars -->
-                <Border Style="{StaticResource FormCard}" Width="656"> <!-- double width card -->
+                <!-- Particulars (double width) -->
+                <Border Style="{StaticResource FormCard}" Width="656">
                     <StackPanel>
                         <TextBlock Style="{StaticResource LabelText}" Text="Particulars"/>
                         <TextBox Name="Rent_RentParticulars_textBox" TextChanged="Rent_RentParticulars_textBox_TextChanged" AcceptsReturn="True" Height="80" TextWrapping="Wrap"/>
@@ -138,11 +135,11 @@
 
                 <!-- Buttons (full width on wrap) -->
                 <Border Style="{StaticResource FormCard}" Width="656">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
-                        <Button Name="Rent_button" Content="New" Click="Rent_button_Click" Padding="16,8"/>
-                        <Button Name="Rent_Updatebutton" Content="Update" Click="Rent_Updatebutton_Click" Padding="16,8"/>
-                        <Button Name="Rent_Clear" Content="Clear" Click="Rent_Clear_Click" Padding="16,8"/>
-                        <Button Name="Rent_Printbutton" Content="Print" Click="Rent_Printbutton_Click" Padding="16,8"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Name="Rent_button" Content="New" Click="Rent_button_Click" Padding="16,8" Margin="0,0,8,0"/>
+                        <Button Name="Rent_Updatebutton" Content="Update" Click="Rent_Updatebutton_Click" Padding="16,8" Margin="0,0,8,0"/>
+                        <Button Name="Rent_Clear" Content="Clear" Click="Rent_Clear_Click" Padding="16,8" Margin="0,0,8,0"/>
+                        <Button Name="Rent_Printbutton" Content="Print" Click="Rent_Printbutton_Click" Padding="16,8" Margin="0,0,8,0"/>
                         <Button Content="Calculate" Click="CalculateRent" Padding="16,8"/>
                     </StackPanel>
                 </Border>

@@ -1,13 +1,24 @@
-*.dll
-*.exe
-*.doc
-*.docx
-*.xls
-*.xlsx
-*.log
-*.rar
-*.zip
-*.sql
-*.sqlite
-*.TMP
+# IDE caches
+**/.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build outputs (any project folder)
+**/bin/
+**/obj/
+[Bb]uild/
+[Rr]elease*/
+[Dd]ebug*/
+
+# NuGet & artifacts
 packages/
+*.nupkg
+artifacts/
+
+# Rider/Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper

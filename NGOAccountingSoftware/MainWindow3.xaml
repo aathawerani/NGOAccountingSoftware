@@ -1,0 +1,705 @@
+﻿<Window x:Class="TrustApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrustApplication"
+        mc:Ignorable="d"
+        Title="Bara Imambargah Trust" Height="740" Width="1380" WindowStartupLocation="CenterScreen" UseLayoutRounding="True" SnapsToDevicePixels="True" Background="{DynamicResource AppBackgroundBrush}" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto">
+  <Window.Resources>
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="#FFF9F9FB"/>
+    <SolidColorBrush x:Key="AppForegroundBrush" Color="#111111"/>
+    <SolidColorBrush x:Key="PrimaryBrush" Color="#2563EB"/>
+    <SolidColorBrush x:Key="PrimaryBrushHover" Color="#1D4ED8"/>
+    <SolidColorBrush x:Key="CardBrush" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="CardBorderBrush" Color="#1A000000"/>
+    <SolidColorBrush x:Key="InputBorderBrush" Color="#33000000"/>
+
+    <Style TargetType="TextBox">
+      <Setter Property="Margin" Value="4"/>
+      <Setter Property="Padding" Value="8"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource InputBorderBrush}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="MinWidth" Value="120"/>
+    </Style>
+    <Style TargetType="ComboBox">
+      <Setter Property="Margin" Value="4"/>
+      <Setter Property="Padding" Value="6"/>
+      <Setter Property="MinWidth" Value="140"/>
+    </Style>
+    <Style TargetType="DatePicker">
+      <Setter Property="Margin" Value="4"/>
+      <Setter Property="Padding" Value="6"/>
+      <Setter Property="MinWidth" Value="160"/>
+    </Style>
+  </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="1039"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabControl" Margin="10,10,0,0" TabStripPlacement="Left" Grid.ColumnSpan="2">
+            <TabItem Header="Rent" FontSize="20" Margin="-2,-2,0,-2">
+                <Grid x:Name="Rent" Background="#FFE5E5E5" Margin="0,-5,0,5">
+                    <Label Margin="10,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="50" FontSize="20" x:Name="label" Content="Trust" />
+                    <ComboBox Margin="65,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140" MinWidth="145" FontSize="20" x:Name="Rent_Trust_comboBox" SelectionChanged="Rent_Trust_comboBox_SelectionChanged"/>
+                    <Label Margin="220,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="50" FontSize="20" x:Name="label_Copy" Content="Plot" />
+                    <ComboBox Margin="270,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="90" FontSize="20" x:Name="Rent_Plot_comboBox" SelectionChanged="Rent_Plot_comboBox_SelectionChanged"/>
+                    <Label Margin="370,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="50" FontSize="20" x:Name="label2" Content="Type" />
+                    <ComboBox Margin="420,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80" FontSize="20" x:Name="Rent_Space_comboBox" SelectionChanged="Rent_Space_comboBox_SelectionChanged"/>
+                    <Label Margin="510,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40" FontSize="20" x:Name="label21" Content="No." />
+                    <ComboBox Margin="550,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" MinWidth="51" FontSize="20" x:Name="Rent_SpaceNo_comboBox" SelectionChanged="Rent_SpaceNo_comboBox_SelectionChanged"/>
+                    <Label Margin="620,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="label_Copy28" Content="Serial" />
+                    <TextBox Margin="680,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_SerialNo_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.No}" />
+                    <Label Margin="790,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label1" Content="Date" />
+                    <DatePicker Margin="850,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_Date" SelectedDate="{Binding SelectedItem.Date, ElementName=Accounts_Grid}" />
+                    <Label Margin="10,60,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="70" FontSize="20" x:Name="label4" Content="Name" />
+                    <TextBox Margin="80,60,20,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="800" FontSize="20" x:Name="Rent_Name_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.Name}"/>
+                    <Label Margin="10,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="label7" Content="From" />
+                    <ComboBox Margin="70,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_FromM_comboBox" SelectionChanged="CacluateNumMonths"/>
+                    <ComboBox Margin="140,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_FromY_comboBox" SelectionChanged="CacluateNumMonths"/>
+                    <Label Margin="210,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80" FontSize="20" x:Name="label11" Content="Months" />
+                    <ComboBox Margin="290,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_NumMonths_comboBox" SelectionChanged="Rent_NumMonths_comboBox_SelectionChanged" />
+                    <Label Margin="360,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40" FontSize="20" x:Name="label7_Copy" Content="To" />
+                    <ComboBox Margin="400,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_ToM_comboBox" SelectionChanged="CacluateNumMonths"/>
+                    <ComboBox Margin="470,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="Rent_ToY_comboBox" SelectionChanged="CacluateNumMonths"/>
+                    <Label Margin="1020,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="label_Copy37" Content="CNIC" />
+                    <TextBox Margin="1090,10,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_CNIC_textBox" />
+                    <Label Margin="700,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="60" FontSize="20" x:Name="label5_Copy2" Content="Rent" />
+                    <TextBox Margin="670,150,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_MonthlyRent_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.MRent}" TextAlignment="Right" TextChanged="CalculateRent"/>
+                    <Label Margin="800,110,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="70" FontSize="20" x:Name="label5_Copy3" Content="Water" />
+                    <TextBox Margin="790,150,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_MonthlyWater_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WCharges}" TextAlignment="Right" TextChanged="CalculateRent"/>
+                    <Label Margin="10,160,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy1" Content="Particulars" />
+                    <Label Margin="920,450,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label11_Copy" Content="Payment Mode" />
+                    <ComboBox Margin="1090,450,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_PaymentMode" />
+                    <Label Margin="580,450,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label_Copy36" Content="Cheque No." />
+                    <TextBox Margin="750,450,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_BankReference_textBox" />
+                    <Label Margin="10,210,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy2" Content="Rent" />
+                    <TextBox Margin="70,210,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="500" FontSize="20" x:Name="Rent_RentParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RPart}" TextChanged="Rent_RentParticulars_textBox_TextChanged"/>
+                    <Label Margin="600,150,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label10_Copy1" Content="Month" />
+                    <Label Margin="10,260,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="70" FontSize="20" x:Name="label7_Copy5" Content="Water" />
+                    <TextBox Margin="70,260,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="500" FontSize="20" x:Name="Rent_WaterParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WPart}" />
+                    <Label Margin="600,200,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label10" Content="Period" />
+                    <TextBox Margin="670,200,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_TotalRent_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.TotalRent}" TextAlignment="Right" TextChanged="Rent_TotalRent_textBox_TextChanged"/>
+                    <TextBox Margin="790,200,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100" FontSize="20" x:Name="Rent_TotalWater_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.TotalWCharges}" TextAlignment="Right" TextChanged="Rent_TotalWater_textBox_TextChanged"/>
+                    <Label Margin="10,310,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy8" Content="Arears Particulars" />
+                    <Label Margin="600,250,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label10_Copy" Content="Arears" />
+                    <TextBox Margin="670,250,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100"  FontSize="20" x:Name="Rent_RentArears_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RArears}" TextAlignment="Right" TextChanged="Rent_RentArears_textBox_TextChanged"/>
+                    <TextBox Margin="790,250,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="100"  FontSize="20" x:Name="Rent_WaterArears_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WArears}" TextAlignment="Right" TextChanged="Rent_WaterArears_textBox_TextChanged"/>
+                    <Label Margin="10,350,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy6" Content="Rent" />
+                    <TextBox Margin="70,350,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="500" FontSize="20" x:Name="Rent_RentArearsParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RAPart}" />
+                    <Label Margin="600,300,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label8" Content="Total" />
+                    <TextBox Margin="670,300,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_TotalAmount_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.Total}" TextAlignment="Right" />
+                    <Button Margin="750,500,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" x:Name="Rent_Updatebutton" Content="Update" Click="Rent_Updatebutton_Click"/>
+                    <Button Margin="580,500,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" x:Name="Rent_Clear" Content="Clear" Click="Rent_Clear_Click" />
+                    <Label Margin="10,400,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label7_Copy7" Content="Water" />
+                    <TextBox Margin="70,400,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="500" FontSize="20" x:Name="Rent_WaterArearsParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WAPart}" />
+                    <Label Margin="600,350,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="label8_Copy" Content="Paid" />
+                    <TextBox Margin="670,350,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" x:Name="Rent_TotalPaid_textBox" Text="{Binding SelectedItem.Total, ElementName=Rent_Grid}" />
+                    <Button Margin="920,500,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" x:Name="Rent_Printbutton" Content="Print" Click="Rent_Printbutton_Click"/>
+                    <Button Margin="1090,500,1,1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="160" x:Name="Rent_button" Content="Generate" Click="Rent_button_Click"/>
+                    <TextBox HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="121" FontSize="20" Visibility="Hidden" x:Name="Rent_ID_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.ID}" />
+                    <TextBox Visibility="Hidden" x:Name="Rent_ID_textBox1" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.ID}" />
+                    <DataGrid HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="100" Width="1000" x:Name="Rent_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="Rent_Grid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="No" Binding="{Binding Path=No}"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Name}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Monthly Rent" Binding="{Binding Path=MRent}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Monthly Water" Binding="{Binding Path=WCharges}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="From Date" Binding="{Binding Path=FDate}"/>
+                            <DataGridTextColumn Header="To Date" Binding="{Binding Path=TDate}"/>
+                            <DataGridTextColumn Header="Total Rent" Binding="{Binding Path=TotalRent}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Total Water Charges" Binding="{Binding Path=TotalWCharges}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Rent Arears" Binding="{Binding Path=RArears}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Water Arears" Binding="{Binding Path=WArears}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Total Amount" Binding="{Binding Path=Total}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Rent Particulars" Binding="{Binding Path=Rpart}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Rpart}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Water Particulars" Binding="{Binding Path=Wpart}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Wpart}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Rent Arears Particulars" Binding="{Binding Path=RApart}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=RApart}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Water Arears Particulars" Binding="{Binding Path=WApart}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=WApart}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Tenant" FontSize="20" Margin="-2,-2,0,-2">
+                <Grid x:Name="Tenant" Background="#FFE5E5E5" Margin="0,-5,0,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="59*"/>
+                        <RowDefinition Height="207*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="label1000" Content="Trust" HorizontalAlignment="Left" Margin="6,6,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Tenant_Trust_comboBox" HorizontalAlignment="Left" Margin="70,9,0,0" VerticalAlignment="Top" Width="145" Height="36" FontSize="20" SelectionChanged="Tenant_Trust_comboBox_SelectionChanged"/>
+                    <Label x:Name="label_Copy1000" Content="Plot" HorizontalAlignment="Left" Margin="214,9,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.095,0.449" Height="43" Width="49" FontSize="20"/>
+                    <ComboBox x:Name="Tenant_Plot_comboBox" HorizontalAlignment="Left" Margin="257,11,0,0" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.475,1.076" Height="36" FontSize="20" SelectionChanged="Tenant_Plot_comboBox_SelectionChanged"/>
+                    <DataGrid x:Name="Tenant_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Height="462" Width="900" Grid.RowSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="500"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Name}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Space" Binding="{Binding Path=Space}"/>
+                            <DataGridTextColumn Header="No" Binding="{Binding Path=No}"/>
+                            <DataGridTextColumn Header="Rent" Binding="{Binding Path=MRent}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Water" Binding="{Binding Path=WCharges}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="CNIC" Binding="{Binding Path=CNIC}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Majlis" FontSize="20" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5" Margin="0,1,0,-1">
+                    <DatePicker x:Name="Majlis_Date" HorizontalAlignment="Left" Margin="749,14,0,0" VerticalAlignment="Top" Height="40" Width="160" FontSize="20" SelectedDateChanged="Majlis_Date_SelectedDateChanged"/>
+                    <Label x:Name="label1_Copy" Content="Date" HorizontalAlignment="Left" Margin="691,13,0,0" VerticalAlignment="Top" Height="42" Width="54" FontSize="20"/>
+                    <Label x:Name="label4_Copy" Content="Name" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.167,0.487" Height="42" Width="66" FontSize="20"/>
+                    <TextBox x:Name="Majlis_Name_textBox" HorizontalAlignment="Left" Height="38" Margin="82,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="571" FontSize="20" TextChanged="Majlis_Name_textBox_TextChanged"/>
+                    <Label x:Name="label_Copy1" Content="Islamic" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Height="43" Width="74" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy2" Content="From" HorizontalAlignment="Left" Margin="419,14,0,0" VerticalAlignment="Top" Height="43" Width="56" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy3" Content="To" HorizontalAlignment="Left" Margin="531,14,0,0" VerticalAlignment="Top" Height="43" Width="36" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy4" Content="Charges for Lights and Fans" HorizontalAlignment="Left" Margin="536,159,0,0" VerticalAlignment="Top" Height="43" Width="256" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Majlis_LightFan_textBox" HorizontalAlignment="Left" Height="38" Margin="814,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-0.278,0.263" TextChanged="CalculateBill"/>
+                    <Label x:Name="label_Copy5" Content="Quantity" HorizontalAlignment="Left" Margin="81,153,0,0" VerticalAlignment="Top" Height="43" Width="91" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy6" Content="Price / Unit" HorizontalAlignment="Left" Margin="244,154,0,0" VerticalAlignment="Top" Height="43" Width="111" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy7" Content="Milk" HorizontalAlignment="Left" Margin="18,153,0,0" VerticalAlignment="Top" Height="43" Width="58" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Majlis_MilkUnit_textBox" HorizontalAlignment="Left" Height="38" Margin="163,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_MilkUnitPrice_textBox" HorizontalAlignment="Left" Height="38" Margin="352,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_MilkTotal_textBox" HorizontalAlignment="Left" Height="38" Margin="437,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <Label x:Name="label_Copy8" Content="Sugar" HorizontalAlignment="Left" Margin="18,199,0,0" VerticalAlignment="Top" Height="43" Width="66" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Majlis_SugarUnit_textBox" HorizontalAlignment="Left" Height="38" Margin="163,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_SugarUnitPrice_textBox" HorizontalAlignment="Left" Height="38" Margin="352,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_SugarTotal_textBox" HorizontalAlignment="Left" Height="38" Margin="437,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <Label x:Name="label_Copy9" Content="Tea" HorizontalAlignment="Left" Margin="18,242,0,0" VerticalAlignment="Top" Height="43" Width="58" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Majlis_TeaUnit_textBox" HorizontalAlignment="Left" Height="38" Margin="163,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_TeaUnitPrice_textBox" HorizontalAlignment="Left" Height="38" Margin="352,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_TeaTotal_textBox" HorizontalAlignment="Left" Height="38" Margin="439,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <Label x:Name="label_Copy10" Content="Quantity" HorizontalAlignment="Left" Margin="79,199,0,0" VerticalAlignment="Top" Height="43" Width="91" FontSize="20" RenderTransformOrigin="0.727,2.907" />
+                    <Label x:Name="label_Copy11" Content="Quantity" HorizontalAlignment="Left" Margin="79,245,0,0" VerticalAlignment="Top" Height="43" Width="91" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy12" Content="Price / Unit" HorizontalAlignment="Left" Margin="244,201,0,0" VerticalAlignment="Top" Height="43" Width="111" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy13" Content="Price / Unit" HorizontalAlignment="Left" Margin="244,245,0,0" VerticalAlignment="Top" Height="43" Width="111" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy14" Content="Saffron" HorizontalAlignment="Left" Margin="18,290,0,0" VerticalAlignment="Top" Height="43" Width="88" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy15" Content="Cardamoms" HorizontalAlignment="Left" Margin="18,336,0,0" VerticalAlignment="Top" Height="43" Width="110" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy16" Content="Pistachios" HorizontalAlignment="Left" Margin="18,380,0,0" VerticalAlignment="Top" Height="43" Width="110" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy17" Content="Ice" HorizontalAlignment="Left" Margin="286,300,0,0" VerticalAlignment="Top" Height="43" Width="46" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy18" Content="Essence &amp; Color" HorizontalAlignment="Left" Margin="282,339,0,0" VerticalAlignment="Top" Height="43" Width="162" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy19" Content="Gas charges" HorizontalAlignment="Left" Margin="536,201,0,0" VerticalAlignment="Top" Height="43" Width="263" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy20" Content="Miscellaneous" HorizontalAlignment="Left" Margin="284,385,0,0" VerticalAlignment="Top" Height="43" Width="136" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy21" Content="Hadaya / Conveyance Molana" HorizontalAlignment="Left" Margin="540,290,0,0" VerticalAlignment="Top" Height="43" Width="278" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy22" Content="Loud speaker charges" HorizontalAlignment="Left" Margin="536,243,0,0" VerticalAlignment="Top" Height="43" Width="220" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy23" Content="Total Bill Amount" HorizontalAlignment="Left" Margin="542,379,0,0" VerticalAlignment="Top" Height="43" Width="168" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Majlis_Saffron_textBox" HorizontalAlignment="Left" Height="38" Margin="161,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_Cardamoms_textBox" HorizontalAlignment="Left" Height="38" Margin="161,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_Pistachios_textBox" HorizontalAlignment="Left" Height="38" Margin="161,383,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_Ice_textBox" HorizontalAlignment="Left" Height="38" Margin="439,295,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_EssenceColor_textBox" HorizontalAlignment="Left" Height="38" Margin="439,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_Gas_textBox" HorizontalAlignment="Left" Height="38" Margin="814,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_Miscellaneous_textBox" HorizontalAlignment="Left" Height="38" Margin="437,385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_Molana_textBox" HorizontalAlignment="Left" Height="38" Margin="814,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_LoudSpeaker_textBox" HorizontalAlignment="Left" Height="38" Margin="814,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" TextChanged="CalculateBill"/>
+                    <TextBox x:Name="Majlis_TotalBill_textBox" HorizontalAlignment="Left" Height="38" Margin="810,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="-1.867,2.526" />
+                    <Label x:Name="label_Copy29" Content="Serial No." HorizontalAlignment="Left" Margin="666,59,0,0" VerticalAlignment="Top" Height="43" Width="93" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Majlis_SerialNo_textBox" HorizontalAlignment="Left" Height="38" Margin="768,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <ComboBox x:Name="Majlis_IslamicDay_comboBox" HorizontalAlignment="Left" Margin="89,16,0,0" VerticalAlignment="Top" Width="53"/>
+                    <ComboBox x:Name="Majlis_IslamicMonth_comboBox" HorizontalAlignment="Left" Margin="154,17,0,0" VerticalAlignment="Top" Width="187"/>
+                    <TextBox x:Name="Majlis_IslamicYear_textBox" HorizontalAlignment="Left" Height="38" Margin="346,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" FontSize="20" RenderTransformOrigin="-1.867,2.526"/>
+                    <ComboBox x:Name="Majlis_TimeFrom_comboBox" HorizontalAlignment="Left" Margin="473,17,0,0" VerticalAlignment="Top" Width="53"/>
+                    <ComboBox x:Name="Majlis_TimeTo_comboBox" HorizontalAlignment="Left" Margin="561,16,0,0" VerticalAlignment="Top" Width="53"/>
+                    <ComboBox x:Name="Majlis_TimeAM_comboBox" HorizontalAlignment="Left" Margin="619,16,0,0" VerticalAlignment="Top" Width="67"/>
+                    <Button x:Name="Majlis_GenerateBill_button" Content="Generate Bill" HorizontalAlignment="Left" Margin="725,476,0,0" VerticalAlignment="Top" Width="171" Click="Majlis_GenerateBill_button_Click"/>
+                    <Label x:Name="label4_Copy9" Content="Particulars" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.167,0.487" Height="42" Width="118" FontSize="20"/>
+                    <TextBox x:Name="Majlis_Particulars_textBox" HorizontalAlignment="Left" Height="38" Margin="116,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="720" FontSize="20"/>
+                    <Label x:Name="label4_Copy10" Content="Misc expense details" HorizontalAlignment="Left" Margin="18,427,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.167,0.487" Height="42" Width="189" FontSize="20"/>
+                    <TextBox x:Name="Majlis_MiscDesc_textBox" HorizontalAlignment="Left" Height="38" Margin="210,431,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="626" FontSize="20"/>
+                    <Button x:Name="Majlis_PrintBill_button" Content="Print Bill" HorizontalAlignment="Left" Margin="541,476,0,0" VerticalAlignment="Top" Width="171" Click="Majlis_PrintBill_button_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Voucher" FontSize="20" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5">
+                    <DatePicker x:Name="Expense_Date" HorizontalAlignment="Left" Margin="689,56,0,0" VerticalAlignment="Top" Height="40" Width="160" FontSize="20"/>
+                    <Label x:Name="label1_Copy1" Content="Date" HorizontalAlignment="Left" Margin="630,55,0,0" VerticalAlignment="Top" Height="42" Width="54" FontSize="20"/>
+                    <Label x:Name="label_Copy24" Content="Serial No" HorizontalAlignment="Left" Margin="16,57,0,0" VerticalAlignment="Top" Height="43" Width="101" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Expense_VoucherNumber_textBox" HorizontalAlignment="Left" Height="38" Margin="122,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <Label x:Name="label_Copy25" Content="Amount" HorizontalAlignment="Left" Margin="18,150,0,0" VerticalAlignment="Top" Height="43" Width="97" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Expense_Amount_textBox" TextAlignment="Right" HorizontalAlignment="Left" Height="38" Margin="122,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <Label x:Name="label4_Copy3" Content="being" HorizontalAlignment="Left" Margin="18,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.167,0.487" Height="42" Width="73" FontSize="20"/>
+                    <TextBox x:Name="Expense_Being_textBox" HorizontalAlignment="Left" Height="38" Margin="122,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="723" FontSize="20"/>
+                    <Button x:Name="Expense_GenerateVoucher_button" Content="Generate Voucher" HorizontalAlignment="Left" Margin="678,154,0,0" VerticalAlignment="Top" Width="172" Click="Expense_GenerateVoucher_button_Click"/>
+                    <DatePicker x:Name="Donation_Date" HorizontalAlignment="Left" Margin="687,264,0,0" VerticalAlignment="Top" Height="40" Width="160" FontSize="20"/>
+                    <Label x:Name="label1_Copy2" Content="Date" HorizontalAlignment="Left" Margin="636,263,0,0" VerticalAlignment="Top" Height="42" Width="54" FontSize="20"/>
+                    <Label x:Name="label_Copy26" Content="Serial No." HorizontalAlignment="Left" Margin="17,267,0,0" VerticalAlignment="Top" Height="43" Width="102" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Donation_SerialNo_textBox" HorizontalAlignment="Left" Height="38" Margin="162,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <Label x:Name="label_Copy27" Content="Amount" HorizontalAlignment="Left" Margin="292,449,0,0" VerticalAlignment="Top" Height="43" Width="97" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Donation_Amount_textBox" TextAlignment="Right" HorizontalAlignment="Left" Height="38" Margin="379,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <Label x:Name="label4_Copy1" Content="Name" HorizontalAlignment="Left" Margin="18,356,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.167,0.487" Height="42" Width="66" FontSize="20"/>
+                    <TextBox x:Name="Donation_Name_textBox" HorizontalAlignment="Left" Height="38" Margin="161,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="472" FontSize="20" TextChanged="Donation_Name_textBox_TextChanged"/>
+                    <Label x:Name="label4_Copy2" Content="on account of" HorizontalAlignment="Left" Margin="18,400,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.167,0.487" Height="42" Width="140" FontSize="20"/>
+                    <TextBox x:Name="Donation_OnAccountOf_textBox" HorizontalAlignment="Left" Height="38" Margin="160,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="686" FontSize="20"/>
+                    <Button x:Name="Donation_GenerateReceipt_button" Content="Generate Receipt" HorizontalAlignment="Left" Margin="674,455,0,0" VerticalAlignment="Top" Width="172" Click="Donation_GenerateReceipt_button_Click"/>
+                    <Label x:Name="label_Copy44" Content="Expense Voucher" HorizontalAlignment="Left" Margin="16,15,0,0" VerticalAlignment="Top" Height="43" Width="165" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy45" Content="Donation" HorizontalAlignment="Left" Margin="16,227,0,0" VerticalAlignment="Top" Height="43" Width="165" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy57" Content="Payment Mode" HorizontalAlignment="Left" Margin="18,448,0,0" VerticalAlignment="Top" Height="43" Width="144" FontSize="20"/>
+                    <ComboBox x:Name="Donation_PaymentMode_comboBox" HorizontalAlignment="Left" Margin="159,451,0,0" VerticalAlignment="Top" Width="115" Height="36" FontSize="20"/>
+                    <Label x:Name="label_Copy58" Content="Donation Type" HorizontalAlignment="Left" Margin="16,310,0,0" VerticalAlignment="Top" Height="43" Width="144" FontSize="20"/>
+                    <ComboBox x:Name="Donation_Type_comboBox" HorizontalAlignment="Left" Margin="163,311,0,0" VerticalAlignment="Top" Width="470" Height="36" FontSize="20" SelectionChanged="Donation_Type_comboBox_SelectionChanged"/>
+                    <ComboBox x:Name="Expense_Voucher_comboBox" HorizontalAlignment="Left" Margin="292,153,0,0" VerticalAlignment="Top" Width="362" Height="36" FontSize="20" SelectionChanged="Expense_Voucher_comboBox_SelectionChanged"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Invest" FontSize="20" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5">
+                    <DatePicker x:Name="Investment_Date" HorizontalAlignment="Left" Margin="747,8,0,0" VerticalAlignment="Top" Height="40" Width="160" FontSize="20"/>
+                    <Label x:Name="label1_Copy3" Content="Date" HorizontalAlignment="Left" Margin="698,7,0,0" VerticalAlignment="Top" Height="42" Width="54" FontSize="20"/>
+                    <Label x:Name="label_Copy35" Content="Trust" HorizontalAlignment="Left" Margin="16,4,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Investment_Trust_comboBox" HorizontalAlignment="Left" Margin="71,7,0,0" VerticalAlignment="Top" Width="189" Height="36" FontSize="20" SelectionChanged="Investment_Trust_comboBox_SelectionChanged"/>
+                    <Label x:Name="label_Copy38" Content="Profit" HorizontalAlignment="Left" Margin="725,93,0,0" VerticalAlignment="Top" Height="43" Width="67" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Investment_AmountCertProfit_textBox" TextAlignment="Right" HorizontalAlignment="Left" Height="38" Margin="782,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" FontSize="20" RenderTransformOrigin="1.211,0.5" TextChanged="Investment_AmountCertProfit_textBox_TextChanged"/>
+                    <Label x:Name="label_Copy39" Content="Tax" HorizontalAlignment="Left" Margin="727,137,0,0" VerticalAlignment="Top" Height="43" Width="54" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Investment_WHTCertProfit_textBox" TextAlignment="Right" HorizontalAlignment="Left" Height="38" Margin="782,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" FontSize="20" RenderTransformOrigin="1.211,0.5" TextChanged="Investment_AmountCertProfit_textBox_TextChanged"/>
+                    <Label x:Name="label_Copy40" Content="Folio" HorizontalAlignment="Left" Margin="15,115,0,0" VerticalAlignment="Top" Height="43" Width="58" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label_Copy41" Content="Nos." HorizontalAlignment="Left" Margin="17,63,0,0" VerticalAlignment="Top" Height="43" Width="56" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Investment_CertNo_textBox" Text="{Binding ElementName=Investment_Grid, Path=SelectedItem.No}" HorizontalAlignment="Left" Height="59" Margin="72,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="596" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <Label x:Name="label_Copy42" Content="Value" HorizontalAlignment="Left" Margin="725,49,0,0" VerticalAlignment="Top" Height="43" Width="61" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Investment_Amount_textBox" Text="{Binding ElementName=Investment_Grid, Path=SelectedItem.Amount}" TextAlignment="Right" HorizontalAlignment="Left" Height="38" Margin="782,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <TextBox x:Name="Investment_Folio_textBox" Text="{Binding ElementName=Investment_Grid, Path=SelectedItem.Folio}" HorizontalAlignment="Left" Height="38" Margin="73,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <Button x:Name="Investment_CertSoldSave_button" Content="Matured" HorizontalAlignment="Left" Margin="122,165,0,0" VerticalAlignment="Top" Width="100" Click="Investment_CertSoldSave_button_Click"/>
+                    <Button x:Name="Investment_CertProfitSave_button" Content="Profit" HorizontalAlignment="Left" Margin="336,165,0,0" VerticalAlignment="Top" Width="100" Click="Investment_CertProfitSave_button_Click"/>
+                    <Button x:Name="Investment_CertPurchasedSave_button" Content="Purchase" HorizontalAlignment="Left" Margin="16,165,0,0" VerticalAlignment="Top" Width="102" Click="Investment_CertPurchasedSave_button_Click"/>
+                    <ComboBox x:Name="Investment_CertType_comboBox" HorizontalAlignment="Left" Margin="344,10,0,0" VerticalAlignment="Top" Width="124" Height="36" FontSize="20" SelectionChanged="Investment_CertType_comboBox_SelectionChanged"/>
+                    <Label x:Name="label_Copy54" Content="Scheme" HorizontalAlignment="Left" Margin="264,6,0,0" VerticalAlignment="Top" Height="43" Width="82" FontSize="20"/>
+                    <Label x:Name="label_Copy33" Content="Maturity" HorizontalAlignment="Left" Margin="498,116,0,0" VerticalAlignment="Top" Height="43" Width="92" FontSize="20"/>
+                    <ComboBox x:Name="Investment_CertPurchaseMaturity_comboBox" HorizontalAlignment="Left" Margin="580,120,0,0" VerticalAlignment="Top" Width="88" Height="36" FontSize="20" />
+                    <Label x:Name="label_Copy59" Content="Net" HorizontalAlignment="Left" Margin="727,181,0,0" VerticalAlignment="Top" Height="43" Width="54" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Investment_NetCertProfit_textBox" TextAlignment="Right" HorizontalAlignment="Left" Height="38" Margin="782,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <TextBox x:Name="Investment_ID_textBox" Text="{Binding ElementName=Investment_Grid, Path=SelectedItem.ID}" HorizontalAlignment="Left" Height="38" Margin="707,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" FontSize="20" Visibility="Hidden"/>
+                    <Button x:Name="Investment_CertUpdate_button" Content="Update" HorizontalAlignment="Left" Margin="228,165,0,0" VerticalAlignment="Top" Width="102" Click="Investment_CertUpdate_button_Click"/>
+                    <DataGrid AutoGenerateColumns="False" x:Name="Investment_Grid" IsSynchronizedWithCurrentItem="True" Grid.Row="0" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Height="283" Width="892" SelectionChanged="Investment_Grid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
+                            <DataGridTextColumn Header="Folio" Binding="{Binding Path=Folio}"/>
+                            <DataGridTextColumn Header="No" Binding="{Binding Path=No}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="300"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=No}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Maturity" Binding="{Binding Path=Maturity}"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding Path=Status}"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <CheckBox x:Name="Matured_checkBox" HorizontalAlignment="Left" Margin="449,166,0,0" VerticalAlignment="Top" Checked="Matured_checkBox_Checked" Unchecked="Matured_checkBox_Unchecked">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <Label x:Name="label_Copy30" Content="Show Matured" HorizontalAlignment="Left" Margin="479,161,0,0" VerticalAlignment="Top" Height="43" Width="153" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <Label x:Name="label1_Copy5" Content="Purchase" HorizontalAlignment="Left" Margin="234,117,0,0" VerticalAlignment="Top" Height="42" Width="92" FontSize="20"/>
+                    <DatePicker x:Name="Investment_Purchase_Date" HorizontalAlignment="Left" Margin="329,120,0,0" VerticalAlignment="Top" Height="40" Width="160" FontSize="20"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Misc" FontSize="20" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="label_Copy46" Content="Trust" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Misc_Trust_comboBox" HorizontalAlignment="Left" Margin="79,15,0,0" VerticalAlignment="Top" Width="189" Height="36" FontSize="20" SelectionChanged="Misc_Trust_comboBox_SelectionChanged"/>
+                    <Label x:Name="label_Copy47" Content="Debit Account" HorizontalAlignment="Left" Margin="46,90,0,0" VerticalAlignment="Top" Height="43" Width="157" FontSize="20"/>
+                    <ComboBox x:Name="Debit_Account_comboBox" HorizontalAlignment="Left" Margin="223,91,0,0" VerticalAlignment="Top" Width="432" Height="36" FontSize="20"/>
+                    <DatePicker x:Name="Misc_Date" HorizontalAlignment="Left" Margin="721,14,0,0" VerticalAlignment="Top" Height="40" Width="160" FontSize="20"/>
+                    <Label x:Name="label1_Copy4" Content="Date" HorizontalAlignment="Left" Margin="666,13,0,0" VerticalAlignment="Top" Height="42" Width="54" FontSize="20"/>
+                    <Label x:Name="label4_Copy6" Content="Particulars" HorizontalAlignment="Left" Margin="48,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.167,0.487" Height="42" Width="101" FontSize="20"/>
+                    <TextBox x:Name="Expense_Particulars_textBox" HorizontalAlignment="Left" Height="75" Margin="154,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="727" FontSize="20"/>
+                    <Label x:Name="label9_Copy3" Content="Amount" HorizontalAlignment="Left" Margin="674,86,0,0" VerticalAlignment="Top" Height="42" Width="84" FontSize="20"/>
+                    <TextBox x:Name="Transfer_Amount_textBox_Copy" TextAlignment="Right" HorizontalAlignment="Left" Height="38" Margin="762,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" FontSize="20"/>
+                    <Button x:Name="Transfer_Save_button" Content="Submit" HorizontalAlignment="Left" Margin="707,258,0,0" VerticalAlignment="Top" Width="172" Click="Transfer_Save_button_Click"/>
+                    <Label x:Name="label_Copy50" Content="Credit Account" HorizontalAlignment="Left" Margin="48,128,0,0" VerticalAlignment="Top" Height="43" Width="155" FontSize="20"/>
+                    <ComboBox x:Name="Credit_Account_comboBox" HorizontalAlignment="Left" Margin="223,133,0,0" VerticalAlignment="Top" Width="432" Height="36" FontSize="20"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Cash" FontSize="20" GotFocus="Cash_GotFocus" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="label_Copy49" Content="Trust" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Cash_Trust_comboBox" HorizontalAlignment="Left" Margin="79,15,0,0" VerticalAlignment="Top" Width="189" Height="36" FontSize="20" SelectionChanged="Cash_Trust_comboBox_SelectionChanged"/>
+                    <DataGrid x:Name="Cash_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Grid.Row="0" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Height="427" Width="900">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
+                            <DataGridTextColumn Header="No" Binding="{Binding Path=No}"/>
+                            <DataGridTextColumn Header="A/c" Binding="{Binding Path=Account}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Name}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Particulars" Binding="{Binding Path=Particulars}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Particulars}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Debit" Binding="{Binding Path=Debit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Credit" Binding="{Binding Path=Credit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Total" Binding="{Binding Path=Total}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Receive" FontSize="20" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="label_Copy100" Content="Trust" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Receivable_Trust_comboBox" HorizontalAlignment="Left" Margin="69,11,0,0" VerticalAlignment="Top" Width="189" Height="36" FontSize="20" SelectionChanged="Receivable_Trust_comboBox_SelectionChanged"/>
+                    <TextBox x:Name="Receivable_ID_textBox" Text="{Binding ElementName=Receivable_Grid, Path=SelectedItem.ID}" HorizontalAlignment="Left" Height="38" Margin="707,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" FontSize="20" Visibility="Hidden" Grid.Row="1"/>
+                    <DataGrid x:Name="Receivable_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" Grid.Row="0" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Height="427" Width="900">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
+                            <DataGridTextColumn Header="No" Binding="{Binding Path=No}"/>
+                            <DataGridTextColumn Header="A/c" Binding="{Binding Path=Account}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Name}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Particulars" Binding="{Binding Path=Particulars}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Particulars}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Debit" Binding="{Binding Path=Debit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Credit" Binding="{Binding Path=Credit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Total" Binding="{Binding Path=Total}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="Receivables_Receivedbutton" Content="Received" HorizontalAlignment="Left" Margin="681,14,0,0" VerticalAlignment="Top" Width="97" Click="Receivables_Receivedbutton_Click" RenderTransformOrigin="-0.351,-7.532"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Accounts" FontSize="20" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="Accounts_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Right" Margin="10,202,0,0" VerticalAlignment="Top" Height="303" Width="900" SelectionChanged="Accounts_Grid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
+                            <DataGridTextColumn Header="No" Binding="{Binding Path=No}"/>
+                            <DataGridTextColumn Header="A/c" Binding="{Binding Path=Account}"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Name}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Particulars" Binding="{Binding Path=Particulars}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="200"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Particulars}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Debit" Binding="{Binding Path=Debit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Credit" Binding="{Binding Path=Credit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Total" Binding="{Binding Path=Total}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="Account_Update_button" Content="Update" HorizontalAlignment="Left" Margin="831,16,0,0" VerticalAlignment="Top" Width="75" Click="Account_Update_button_Click"/>
+                    <Button x:Name="Account_Add_button" Content="Add" HorizontalAlignment="Left" Margin="831,66,0,0" VerticalAlignment="Top" Width="75" Click="Account_Add_button_Click"/>
+                    <Button x:Name="Account_Delete_button" Content="Delete" HorizontalAlignment="Left" Margin="831,112,0,0" VerticalAlignment="Top" Width="75" Click="Account_Delete_button_Click"/>
+                    <Label x:Name="label_Copy130" Content="Trust" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Accounts_Trust_comboBox" HorizontalAlignment="Left" Margin="65,13,0,0" VerticalAlignment="Top" Width="150" Height="36" FontSize="20" SelectionChanged="Accounts_Trust_comboBox_SelectionChanged"/>
+                    <Label x:Name="label_Copy131" Content="Account" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Height="43" Width="82" FontSize="20"/>
+                    <ComboBox x:Name="Accounts_Account_comboBox" HorizontalAlignment="Left" Margin="303,13,0,0" VerticalAlignment="Top" Width="136" Height="36" FontSize="20" SelectionChanged="Accounts_Account_comboBox_SelectionChanged"/>
+                    <DatePicker x:Name="Accounts_Date" SelectedDate="{Binding ElementName=Accounts_Grid, Path=SelectedItem.Date, StringFormat={}{0:d MM yyyy}, Mode=OneWay}" HorizontalAlignment="Left" Margin="661,14,0,0" VerticalAlignment="Top" Height="40" Width="160" FontSize="20"/>
+                    <Label x:Name="label1_Copy13" Content="Date" HorizontalAlignment="Left" Margin="606,13,0,0" VerticalAlignment="Top" Height="42" Width="54" FontSize="20"/>
+                    <Label x:Name="label_Copy132" Content="Receipt" HorizontalAlignment="Left" Margin="444,10,0,0" VerticalAlignment="Top" Height="44" Width="79" FontSize="20" RenderTransformOrigin="0.727,2.907"/>
+                    <TextBox x:Name="Accounts_SerialNo_textBox" Text="{Binding ElementName=Accounts_Grid, Path=SelectedItem.No}" HorizontalAlignment="Left" Height="38" Margin="521,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" FontSize="20" RenderTransformOrigin="1.211,0.5"/>
+                    <Label x:Name="label4_Copy4" Content="Name" HorizontalAlignment="Left" Margin="14,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.167,0.487" Height="42" Width="69" FontSize="20"/>
+                    <TextBox x:Name="Accounts_Name_textBox" Text="{Binding ElementName=Accounts_Grid, Path=SelectedItem.Name}" HorizontalAlignment="Left" Height="38" Margin="83,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="738" FontSize="20"/>
+                    <Label x:Name="label_Copy133" Content="Reference Account" HorizontalAlignment="Left" Margin="13,104,0,0" VerticalAlignment="Top" Height="43" Width="180" FontSize="20"/>
+                    <ComboBox x:Name="Accounts_RefAccount_comboBox" SelectedValue="{Binding ElementName=Accounts_Grid, Path=SelectedItem.Account}" HorizontalAlignment="Left" Margin="191,107,0,0" VerticalAlignment="Top" Width="153" Height="36" FontSize="20"/>
+                    <Label x:Name="label4_Copy5" Content="Particulars" HorizontalAlignment="Left" Margin="11,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.167,0.487" Height="42" Width="101" FontSize="20"/>
+                    <TextBox x:Name="Accounts_Particulars_textBox" Text="{Binding ElementName=Accounts_Grid, Path=SelectedItem.Particulars}" HorizontalAlignment="Left" Height="38" Margin="119,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="702" FontSize="20"/>
+                    <Label x:Name="label9_Copy1" Content="Debit" HorizontalAlignment="Left" Margin="400,106,0,0" VerticalAlignment="Top" Height="43" Width="64" FontSize="20"/>
+                    <TextBox x:Name="Accounts_Debit_textBox" Text="{Binding ElementName=Accounts_Grid, Path=SelectedItem.Debit}" HorizontalAlignment="Left" Height="38" Margin="465,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" FontSize="20"/>
+                    <Label x:Name="label9_Copy2" Content="Credit" HorizontalAlignment="Left" Margin="599,107,0,0" VerticalAlignment="Top" Height="43" Width="69" FontSize="20"/>
+                    <TextBox x:Name="Accounts_Credit_textBox" Text="{Binding ElementName=Accounts_Grid, Path=SelectedItem.Credit}" HorizontalAlignment="Left" Height="38" Margin="671,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" FontSize="20" />
+                    <TextBox x:Name="Accounts_ID_textBox" Text="{Binding ElementName=Accounts_Grid, Path=SelectedItem.ID}" HorizontalAlignment="Left" Height="38" Margin="707,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" FontSize="20" Visibility="Hidden"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Reports" FontSize="20" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="label_Copy56" Content="Trust" HorizontalAlignment="Left" Margin="16,10,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Reports_Trust_comboBox" HorizontalAlignment="Left" Margin="75,11,0,0" VerticalAlignment="Top" Width="157" Height="36" FontSize="20"/>
+                    <Button x:Name="Report_Accounts_button" Content="Export" HorizontalAlignment="Left" Margin="803,16,0,0" VerticalAlignment="Top" Width="113" Click="Report_Accounts_button_Click" RenderTransformOrigin="-1.251,-5.21"/>
+                    <ComboBox x:Name="Reports_Year_comboBox" HorizontalAlignment="Left" Margin="279,12,0,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="0.099,0.288" Height="36" FontSize="20"/>
+                    <Label x:Name="label7_Copy4" Content="Year" HorizontalAlignment="Left" Margin="230,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.07,-0.038" Height="44" Width="49" FontSize="20"/>
+                    <Button x:Name="Report_Statements_button" Content="Statements" HorizontalAlignment="Left" Margin="683,16,0,0" VerticalAlignment="Top" Width="111" Click="Report_Statements_button_Click" RenderTransformOrigin="-1.251,-5.21"/>
+                    <DataGrid x:Name="Report_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Right" Margin="0,61,0,0" VerticalAlignment="Top" Height="444" Width="900" SelectionChanged="Accounts_Grid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
+                            <DataGridTextColumn Header="Account" Binding="{Binding Path=AccountKey}"/>
+                            <DataGridTextColumn Header="Particulars" Binding="{Binding Path=Particulars}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="400"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Particulars}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Debit" Binding="{Binding Path=Debit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle >
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Credit" Binding="{Binding Path=Credit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox x:Name="Reports_Statement_comboBox" SelectionChanged="Reports_Statement_comboBox_SelectionChanged" HorizontalAlignment="Left" Margin="487,12,0,0" VerticalAlignment="Top" Width="189" Height="36" FontSize="20"/>
+                    <Label x:Name="label7_Copy9" Content="Report" HorizontalAlignment="Left" Margin="414,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.07,-0.038" Height="44" Width="72" FontSize="20"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Closing" FontSize="20" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="label_Copy561" Content="Trust" HorizontalAlignment="Left" Margin="16,12,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Closing_Trust_comboBox" HorizontalAlignment="Left" Margin="79,17,0,0" VerticalAlignment="Top" Width="189" Height="36" FontSize="20"/>
+                    <ComboBox x:Name="Closing_Year_comboBox" HorizontalAlignment="Left" Margin="331,18,0,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="0.099,0.288" Height="36" FontSize="20"/>
+                    <Label x:Name="label7_Copy41" Content="Year" HorizontalAlignment="Left" Margin="280,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.07,-0.038" Height="44" Width="49" FontSize="20"/>
+                    <Button x:Name="Closing_Closing_button" Content="Closing" HorizontalAlignment="Left" Margin="725,22,0,0" VerticalAlignment="Top" Width="171" Click="Closing_Closing_button_Click" RenderTransformOrigin="-1.251,-5.21"/>
+                    <Button x:Name="Closing_Generate_button_Copy" Content="Generate Entries" HorizontalAlignment="Left" Margin="516,22,0,0" VerticalAlignment="Top" Width="171" Click="Closing_Generate_button_Copy_Click" RenderTransformOrigin="-1.251,-5.21"/>
+                    <DataGrid x:Name="Closing_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Right" Margin="0,72,0,0" VerticalAlignment="Top" Height="433" Width="900" SelectionChanged="Accounts_Grid_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
+                            <DataGridTextColumn Header="Account" Binding="{Binding Path=AccountKey}"/>
+                            <DataGridTextColumn Header="Particulars" Binding="{Binding Path=Particulars}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Width" Value="400"></Setter>
+                                        <Setter Property="ToolTip" Value="{Binding Path=Particulars}"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Debit" Binding="{Binding Path=Debit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Credit" Binding="{Binding Path=Credit}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Settings" FontSize="20" Margin="-3,-2,1,-2">
+                <Grid Background="#FFE5E5E5" Margin="4,-2,-4,2">
+                    <ComboBox x:Name="Settings_Year_comboBox" HorizontalAlignment="Left" Margin="96,14,0,0" VerticalAlignment="Top" Width="135" RenderTransformOrigin="0.099,0.288" Height="36" FontSize="20" SelectionChanged="Settings_Year_comboBox_SelectionChanged"/>
+                    <Label x:Name="label7_Copy3" Content="Set Year" HorizontalAlignment="Left" Margin="7,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.07,-0.038" Height="44" Width="79" FontSize="20"/>
+                    <Label x:Name="label_Copy31" Content="Trust" HorizontalAlignment="Left" Margin="6,90,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Settings_Trust_comboBox" HorizontalAlignment="Left" Margin="59,93,0,0" VerticalAlignment="Top" Width="145" Height="36" FontSize="20" />
+                    <Label x:Name="label_Copy32" Content="Add Account" HorizontalAlignment="Left" Margin="6,57,0,0" VerticalAlignment="Top" Height="43" Width="128" FontSize="20"/>
+                    <Label x:Name="label5_Copy" Content="Code" HorizontalAlignment="Left" Margin="406,88,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,0.526" Height="44" Width="58" FontSize="20"/>
+                    <TextBox x:Name="Settings_AccountCode_textBox" TextAlignment="Left" HorizontalAlignment="Left" Height="38" Margin="462,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" FontSize="20"/>
+                    <Label x:Name="label_Copy34" Content="Type" HorizontalAlignment="Left" Margin="208,88,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                    <ComboBox x:Name="Settings_AccountType_comboBox" HorizontalAlignment="Left" Margin="259,91,0,0" VerticalAlignment="Top" Width="145" Height="36" FontSize="20"/>
+                    <Label x:Name="label5_Copy1" Content="Name" HorizontalAlignment="Left" Margin="516,86,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,0.526" Height="44" Width="64" FontSize="20"/>
+                    <TextBox x:Name="Settings_AccountName_textBox" TextAlignment="Left" HorizontalAlignment="Left" Height="65" Margin="580,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" FontSize="20" />
+                    <Button x:Name="Settings_AddAccount_button" Content="Add" HorizontalAlignment="Left" Margin="831,91,0,0" VerticalAlignment="Top" Width="75" Click="Settings_AddAccount_button_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Import" FontSize="20" Margin="-3,2,1,0" Height="35" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" Margin="4,-2,-4,2">
+                    <TextBox x:Name="Import_ImportFilePath" TextAlignment="Left" HorizontalAlignment="Left" Height="38" Margin="12,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="745" FontSize="20" />
+                    <Button x:Name="Import_BrowseDirectory" Content="Browse" HorizontalAlignment="Left" Margin="761,56,0,0" VerticalAlignment="Top" Width="75" Click="Import_BrowseDirectory_Click"/>
+                    <ComboBox x:Name="Import_Trust_comboBox" HorizontalAlignment="Left" Margin="61,11,0,0" VerticalAlignment="Top" Width="145" Height="36" FontSize="20" />
+                    <Button x:Name="Import_ImportAccounts" Content="Import" HorizontalAlignment="Left" Margin="839,56,0,0" VerticalAlignment="Top" Width="75" Click="Import_ImportAccounts_Click"/>
+                    <Label x:Name="label_Copy43" Content="Trust" HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Height="43" Width="55" FontSize="20"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

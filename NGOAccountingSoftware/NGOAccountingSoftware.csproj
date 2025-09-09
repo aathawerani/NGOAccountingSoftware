@@ -246,6 +246,68 @@
     <Compile Include="UI\TenantUI.cs" />
     <Compile Include="UI\VoucherUI.cs" />
     <Compile Include="Lib\Utils.cs" />
+    <Compile Include="ViewModels\AccountsViewModel.cs" />
+    <Compile Include="ViewModels\CashViewModel.cs" />
+    <Compile Include="ViewModels\ClosingViewModel.cs" />
+    <Compile Include="ViewModels\ImportViewModel.cs" />
+    <Compile Include="ViewModels\InvestViewModel.cs" />
+    <Compile Include="ViewModels\MajlisViewModel.cs" />
+    <Compile Include="ViewModels\MiscViewModel.cs" />
+    <Compile Include="ViewModels\ReceiveViewModel.cs" />
+    <Compile Include="ViewModels\RentViewModel.cs" />
+    <Compile Include="ViewModels\ReportsViewModel.cs" />
+    <Compile Include="ViewModels\ResponsiveGrid.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\TenantViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\VoucherViewModel.cs" />
+    <Compile Include="Views\AccountsView.xaml.cs" />
+    <Compile Include="Views\CashView.xaml.cs" />
+    <Compile Include="Views\ClosingView.xaml.cs" />
+    <Compile Include="Views\ImportView.xaml.cs" />
+    <Compile Include="Views\InvestView.xaml.cs" />
+    <Compile Include="Views\MajlisView.xaml.cs" />
+    <Compile Include="Views\MiscView.xaml.cs" />
+    <Compile Include="Views\ReceiveView.xaml.cs" />
+    <Compile Include="Views\RentView.xaml.cs" />
+    <Compile Include="Views\ReportsView.xaml.cs" />
+    <Compile Include="Views\SettingsView.xaml.cs" />
+    <Compile Include="Views\TenantView.xaml.cs" />
+    <Compile Include="Views\VoucherView.xaml.cs" />
+    <Page Include="Views\AccountsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CashView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ClosingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImportView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\InvestView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MajlisView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MiscView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReceiveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RentView.xaml" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -262,6 +324,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ReportsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TenantView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\VoucherView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -195,8 +195,9 @@
     <Compile Include="Exceptions\UtilityException.cs" />
     <Compile Include="Lib\ExcelReader.cs" />
     <Compile Include="Lib\Response.cs" />
+    <Compile Include="Models\NavEntry.cs" />
+    <Compile Include="Models\Section.cs" />
     <Compile Include="Receipts\RentReceipt.cs" />
-    <Compile Include="Section.cs" />
     <Compile Include="TrustAccounts\BIB.cs" />
     <Compile Include="BL\ClosingBL.cs" />
     <Compile Include="BL\DonationBL.cs" />

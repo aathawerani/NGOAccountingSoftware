@@ -1,27 +1,99 @@
-using System; using System.Collections.ObjectModel; using System.Linq; using System.Reflection;
-namespace TrustApplication.ViewModels {
-    public class ShellViewModel : ViewModelBase {
-        public ObservableCollection<NavEntry> Sections { get; } = new ObservableCollection<NavEntry>();
-        private object _currentView; private string _currentSectionTitle;
-        public ShellViewModel(){ BuildSectionsFromTabs(); NavigateByTitle("Rent"); }
-        public object CurrentView { get=>_currentView; private set { _currentView=value; OnPropertyChanged(); } }
-        public string CurrentSectionTitle { get=>_currentSectionTitle; private set { _currentSectionTitle=value; OnPropertyChanged(); } }
-        private void BuildSectionsFromTabs(){
-            var titles = new[]{"Rent","Tenant","Majlis","Voucher","Invest","Misc","Cash","Receive","Accounts","Reports","Closing","Settings","Import"};
-            foreach(var t in titles) Sections.Add(new NavEntry{ Title=t, Category="Pages"});
+using TrustApplication.Views;
+
+namespace TrustApplication.ViewModels
+{
+    public class ShellViewModel : ViewModelBase
+    {
+        private Section _currentSection = Section.Rent;
+        private object _currentView;
+        private string _currentSectionTitle;
+
+        public ShellViewModel()
+        {
+            Navigate(_currentSection);
         }
-        public void NavigateByTitle(string title){
-            if(string.IsNullOrWhiteSpace(title)) return; CurrentSectionTitle = title;
-            var name1 = $"TrustApplication.Views.{Normalize(title)}View";
-            var viewType = AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name1,false,true)).FirstOrDefault(t=>t!=null);
-            if(viewType!=null){ CurrentView = Activator.CreateInstance(viewType); return; }
-            var name2 = $"TrustApplication.Views.{RemoveSpaces(title)}View";
-            viewType = AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType(name2,false,true)).FirstOrDefault(t=>t!=null);
-            if(viewType!=null){ CurrentView = Activator.CreateInstance(viewType); return; }
-            var ph = AppDomain.CurrentDomain.GetAssemblies().Select(a=>a.GetType("TrustApplication.Views.PlaceholderView", false, true)).FirstOrDefault();
-            CurrentView = ph!=null ? Activator.CreateInstance(ph, new object[]{ title }) : null;
+
+        public Section CurrentSection
+        {
+            get => _currentSection;
+            set
+            {
+                if (_currentSection != value)
+                {
+                    _currentSection = value;
+                    OnPropertyChanged();
+                    Navigate(value);
+                }
+            }
         }
-        private static string RemoveSpaces(string s)=> new string(s.Where(c=>!char.IsWhiteSpace(c)).ToArray());
-        private static string Normalize(string s){ var parts=s.Split(' '); for(int i=0;i<parts.Length;i++){ if(parts[i].Length>0) parts[i]=char.ToUpperInvariant(parts[i][0])+parts[i][1..]; } return string.Join("", parts); }
+
+        public object CurrentView
+        {
+            get => _currentView;
+            private set { _currentView = value; OnPropertyChanged(); }
+        }
+
+        public string CurrentSectionTitle
+        {
+            get => _currentSectionTitle;
+            private set { _currentSectionTitle = value; OnPropertyChanged(); }
+        }
+
+        private void Navigate(Section section)
+        {
+            switch (section)
+            {
+                // Operations
+                case Section.Rent:
+                    CurrentView = new RentView();
+                    CurrentSectionTitle = "Rent";
+                    break;
+                case Section.Tenants:
+                    CurrentView = new PlaceholderView("Tenants");
+                    CurrentSectionTitle = "Tenants";
+                    break;
+                case Section.Invoices:
+                    CurrentView = new PlaceholderView("Invoices");
+                    CurrentSectionTitle = "Invoices";
+                    break;
+                case Section.Receipts:
+                    CurrentView = new PlaceholderView("Receipts");
+                    CurrentSectionTitle = "Receipts";
+                    break;
+
+                // Reports
+                case Section.ReportsDaily:
+                    CurrentView = new PlaceholderView("Reports - Daily");
+                    CurrentSectionTitle = "Reports • Daily";
+                    break;
+                case Section.ReportsMonthly:
+                    CurrentView = new PlaceholderView("Reports - Monthly");
+                    CurrentSectionTitle = "Reports • Monthly";
+                    break;
+                case Section.ReportsYearly:
+                    CurrentView = new PlaceholderView("Reports - Yearly");
+                    CurrentSectionTitle = "Reports • Yearly";
+                    break;
+
+                // Administration
+                case Section.Settings:
+                    CurrentView = new PlaceholderView("Settings");
+                    CurrentSectionTitle = "Settings";
+                    break;
+                case Section.Users:
+                    CurrentView = new PlaceholderView("Users");
+                    CurrentSectionTitle = "Users";
+                    break;
+                case Section.Backup:
+                    CurrentView = new PlaceholderView("Backup / Restore");
+                    CurrentSectionTitle = "Backup / Restore";
+                    break;
+
+                default:
+                    CurrentView = new RentView();
+                    CurrentSectionTitle = "Rent";
+                    break;
+            }
+        }
     }
 }

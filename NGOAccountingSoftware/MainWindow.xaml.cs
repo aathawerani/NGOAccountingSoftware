@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using System.Windows;
 using TrustApplication.ViewModels;
 
@@ -11,6 +10,7 @@ namespace TrustApplication
         {
             InitializeComponent();
             DataContext = new ShellViewModel();
+
             System.Windows.Input.Stylus.SetIsPressAndHoldEnabled(this, false);
             System.Windows.Input.Stylus.SetIsTouchFeedbackEnabled(this, false);
             System.Windows.Input.Stylus.SetIsFlicksEnabled(this, false);
@@ -34,12 +34,18 @@ namespace TrustApplication
             const int TABLET_DISABLE_TOUCHUIFORCEOFF = 0x00200000;
             const int TABLET_DISABLE_TOUCHSWITCH = 0x00800000;
             const int TABLET_DISABLE_FLICKFALLBACKKEYS = 0x01000000;
+
             if (msg == WM_TABLET_QUERYSYSTEMGESTURESTATUS)
             {
                 handled = true;
-                int flags = TABLET_DISABLE_PRESSANDHOLD | TABLET_DISABLE_PENTAPFEEDBACK | TABLET_DISABLE_PENBARRELFEEDBACK
-                            | TABLET_DISABLE_FLICKS | TABLET_DISABLE_SMOOTHSCROLLING | TABLET_DISABLE_TOUCHUIFORCEOFF
-                            | TABLET_DISABLE_TOUCHSWITCH | TABLET_DISABLE_FLICKFALLBACKKEYS;
+                int flags = TABLET_DISABLE_PRESSANDHOLD
+                            | TABLET_DISABLE_PENTAPFEEDBACK
+                            | TABLET_DISABLE_PENBARRELFEEDBACK
+                            | TABLET_DISABLE_FLICKS
+                            | TABLET_DISABLE_SMOOTHSCROLLING
+                            | TABLET_DISABLE_TOUCHUIFORCEOFF
+                            | TABLET_DISABLE_TOUCHSWITCH
+                            | TABLET_DISABLE_FLICKFALLBACKKEYS;
                 return new IntPtr(flags);
             }
             return IntPtr.Zero;
@@ -47,20 +53,9 @@ namespace TrustApplication
 
         private void OnNavItemClick(object sender, RoutedEventArgs e)
         {
-            if (DataContext is ShellViewModel vm && sender is System.Windows.Controls.Button btn)
+            if (sender is System.Windows.Controls.Button btn && DataContext is ShellViewModel vm && btn.CommandParameter is Section s)
             {
-                var p = btn.CommandParameter;
-                if (p is string title && !string.IsNullOrWhiteSpace(title))
-                    vm.NavigateByTitle(title);
-                else if (p is Section s)
-                    vm.NavigateByTitle(s.ToString());
-                else if (p != null)
-                {
-                    var prop = p.GetType().GetProperty("Title", BindingFlags.Public | BindingFlags.Instance);
-                    var title2 = prop?.GetValue(p) as string;
-                    if (!string.IsNullOrWhiteSpace(title2))
-                        vm.NavigateByTitle(title2);
-                }
+                vm.CurrentSection = s;
             }
         }
     }

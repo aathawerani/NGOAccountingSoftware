@@ -4,110 +4,125 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrustApplication"
+        xmlns:views="clr-namespace:TrustApplication.Views"
         mc:Ignorable="d"
-        Title="Trust Application"
-        Height="720" Width="1180" MinHeight="540" MinWidth="900"
+        Title="Trust Application" Height="720" Width="1120" MinHeight="540" MinWidth="900"
         WindowStartupLocation="CenterScreen"
         Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
 
     <Window.Resources>
-        <CollectionViewSource x:Key="SectionGroups" Source="{Binding Sections}">
-            <CollectionViewSource.GroupDescriptions>
-                <PropertyGroupDescription PropertyName="Category"/>
-            </CollectionViewSource.GroupDescriptions>
-        </CollectionViewSource>
-
-        <Style x:Key="NavButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <!-- Button used in the nav list -->
+        <Style TargetType="Button" x:Key="NavButton">
+            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="10,8"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
-                            <ContentPresenter/>
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#10000000"/>
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#1A000000"/>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style TargetType="TextBlock" x:Key="Heading">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+        </Style>
+
+        <!-- Make Expander headers a bit denser -->
+        <Style TargetType="Expander">
+            <Setter Property="Margin" Value="0,8,0,0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
     </Window.Resources>
 
+    <!-- Shell layout: fixed-width left menu, fluid right content. -->
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="220"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0"
-                Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-                BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
-                BorderThickness="0,0,1,0"
-                Padding="10">
+        <!-- Left Navigation -->
+        <Border Grid.Column="0" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Padding="12" BorderThickness="0,0,1,0" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}">
             <DockPanel LastChildFill="True">
-                <TextBlock DockPanel.Dock="Top" Text="Navigation" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <TextBlock DockPanel.Dock="Top" Text="Navigation" Style="{StaticResource Heading}"/>
+
+                <!-- Scrollable group of collapsible sections -->
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListBox ItemsSource="{Binding Source={StaticResource SectionGroups}}"
-                             Background="Transparent" BorderThickness="0" Margin="4,2">
-                        <ListBox.GroupStyle>
-                            <GroupStyle>
-                                <GroupStyle.ContainerStyle>
-                                    <Style TargetType="{x:Type GroupItem}">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type GroupItem}">
-                                                    <Expander IsExpanded="True" Margin="2,6,2,0">
-                                                        <Expander.Header>
-                                                            <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="SemiBold"/>
-                                                        </Expander.Header>
-                                                        <ItemsPresenter/>
-                                                    </Expander>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </GroupStyle.ContainerStyle>
-                            </GroupStyle>
-                        </ListBox.GroupStyle>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Button Content="{Binding Title}"
-                                        Style="{StaticResource NavButtonStyle}"
-                                        CommandParameter="{Binding Title}"
-                                        Click="OnNavItemClick"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    <StackPanel>
+                        <!-- OPERATIONS -->
+                        <Expander Header="Operations" IsExpanded="True">
+                            <StackPanel Margin="8,4,0,8">
+                                <Button Style="{StaticResource NavButton}" Content="Rent" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Rent}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Tenants" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Tenants}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Invoices" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Invoices}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Receipts" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Receipts}"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- REPORTS -->
+                        <Expander Header="Reports">
+                            <StackPanel Margin="8,4,0,8">
+                                <Button Style="{StaticResource NavButton}" Content="Daily" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.ReportsDaily}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Monthly" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.ReportsMonthly}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Yearly" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.ReportsYearly}"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <!-- ADMINISTRATION -->
+                        <Expander Header="Administration">
+                            <StackPanel Margin="8,4,0,8">
+                                <Button Style="{StaticResource NavButton}" Content="Settings" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Settings}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Users" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Users}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Backup/Restore" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Backup}"/>
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
                 </ScrollViewer>
+
+                <!-- Footer -->
+                <DockPanel DockPanel.Dock="Bottom" Margin="0,12,0,0">
+                    <TextBlock Foreground="Gray" TextWrapping="Wrap" Text="© Trust Application"/>
+                </DockPanel>
             </DockPanel>
         </Border>
 
+        <!-- thin divider -->
         <Border Grid.Column="1" Width="1" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
 
+        <!-- Right content -->
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Padding="16,12" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
-                    BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"
-                    BorderThickness="0,0,0,1">
+
+            <!-- Top bar -->
+            <Border Padding="16,12" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" BorderThickness="0,0,0,1">
                 <DockPanel>
                     <TextBlock Text="{Binding CurrentSectionTitle}" FontSize="18" FontWeight="Bold"/>
                 </DockPanel>
             </Border>
+
+            <!-- Main region where views are swapped -->
             <ContentControl Grid.Row="1" Margin="16" Content="{Binding CurrentView}"/>
         </Grid>
     </Grid>

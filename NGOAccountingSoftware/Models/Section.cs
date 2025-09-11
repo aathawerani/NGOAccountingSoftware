@@ -5,13 +5,10 @@ namespace TrustApplication
         // Operations
         Rent = 0,
         Tenants = 1,
-        Invoices = 2,
-        Receipts = 3,
 
         // Reports
-        ReportsDaily = 10,
-        ReportsMonthly = 11,
-        ReportsYearly = 12,
+        Majlis = 10,
+        Voucher = 11,
 
         // Administration
         Settings = 20,

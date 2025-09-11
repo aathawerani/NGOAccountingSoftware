@@ -55,7 +55,7 @@
     <!-- Shell layout: fixed-width left menu, fluid right content. -->
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="140"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -69,21 +69,18 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <!-- OPERATIONS -->
-                        <Expander Header="Operations" IsExpanded="True">
+                        <Expander Header="Rent" IsExpanded="True">
                             <StackPanel Margin="8,4,0,8">
-                                <Button Style="{StaticResource NavButton}" Content="Rent" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Rent}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Receipt" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Rent}"/>
                                 <Button Style="{StaticResource NavButton}" Content="Tenants" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Tenants}"/>
-                                <Button Style="{StaticResource NavButton}" Content="Invoices" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Invoices}"/>
-                                <Button Style="{StaticResource NavButton}" Content="Receipts" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Receipts}"/>
                             </StackPanel>
                         </Expander>
 
                         <!-- REPORTS -->
-                        <Expander Header="Reports">
+                        <Expander Header="Majlis">
                             <StackPanel Margin="8,4,0,8">
-                                <Button Style="{StaticResource NavButton}" Content="Daily" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.ReportsDaily}"/>
-                                <Button Style="{StaticResource NavButton}" Content="Monthly" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.ReportsMonthly}"/>
-                                <Button Style="{StaticResource NavButton}" Content="Yearly" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.ReportsYearly}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Receipt" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Majlis}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Voucher" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Voucher}"/>
                             </StackPanel>
                         </Expander>
 
@@ -98,10 +95,6 @@
                     </StackPanel>
                 </ScrollViewer>
 
-                <!-- Footer -->
-                <DockPanel DockPanel.Dock="Bottom" Margin="0,12,0,0">
-                    <TextBlock Foreground="Gray" TextWrapping="Wrap" Text="© Trust Application"/>
-                </DockPanel>
             </DockPanel>
         </Border>
 

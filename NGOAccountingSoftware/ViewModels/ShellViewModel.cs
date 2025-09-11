@@ -46,34 +46,23 @@ namespace TrustApplication.ViewModels
                 // Operations
                 case Section.Rent:
                     CurrentView = new RentView();
-                    CurrentSectionTitle = "Rent";
+                    CurrentSectionTitle = "Receipt";
                     break;
                 case Section.Tenants:
-                    CurrentView = new PlaceholderView("Tenants");
+                    CurrentView = new TenantView();
                     CurrentSectionTitle = "Tenants";
-                    break;
-                case Section.Invoices:
-                    CurrentView = new PlaceholderView("Invoices");
-                    CurrentSectionTitle = "Invoices";
-                    break;
-                case Section.Receipts:
-                    CurrentView = new PlaceholderView("Receipts");
-                    CurrentSectionTitle = "Receipts";
                     break;
 
                 // Reports
-                case Section.ReportsDaily:
-                    CurrentView = new PlaceholderView("Reports - Daily");
-                    CurrentSectionTitle = "Reports • Daily";
+                case Section.Majlis:
+                    CurrentView = new MajlisView();
+                    CurrentSectionTitle = "Receipt";
                     break;
-                case Section.ReportsMonthly:
-                    CurrentView = new PlaceholderView("Reports - Monthly");
-                    CurrentSectionTitle = "Reports • Monthly";
+                case Section.Voucher:
+                    CurrentView = new VoucherView();
+                    CurrentSectionTitle = "Voucher";
                     break;
-                case Section.ReportsYearly:
-                    CurrentView = new PlaceholderView("Reports - Yearly");
-                    CurrentSectionTitle = "Reports • Yearly";
-                    break;
+
 
                 // Administration
                 case Section.Settings:

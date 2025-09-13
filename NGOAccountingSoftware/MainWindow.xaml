@@ -85,11 +85,24 @@
                         </Expander>
 
                         <!-- ADMINISTRATION -->
-                        <Expander Header="Administration">
+                        <Expander Header="Accounts">
                             <StackPanel Margin="8,4,0,8">
-                                <Button Style="{StaticResource NavButton}" Content="Settings" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Settings}"/>
-                                <Button Style="{StaticResource NavButton}" Content="Users" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Users}"/>
-                                <Button Style="{StaticResource NavButton}" Content="Backup/Restore" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Backup}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Manual" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Settings}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Investments" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Users}"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander Header="Reports">
+                            <StackPanel Margin="8,4,0,8">
+                                <Button Style="{StaticResource NavButton}" Content="Cash" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Settings}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Receivables" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Users}"/>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander Header="Import/Export">
+                            <StackPanel Margin="8,4,0,8">
+                                <Button Style="{StaticResource NavButton}" Content="Import" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Settings}"/>
+                                <Button Style="{StaticResource NavButton}" Content="Export" Click="OnNavItemClick" CommandParameter="{x:Static local:Section.Users}"/>
                             </StackPanel>
                         </Expander>
                     </StackPanel>

@@ -13,7 +13,7 @@
             <Setter Property="Margin" Value="0,0,0,6"/>
         </Style>
 
-        <!-- Lightweight pair group (no borders). We also turn off focus visuals just in case a theme adds them. -->
+        <!-- Pair group without borders; fixed width so it wraps as a unit -->
         <Style x:Key="FieldGroup" TargetType="Grid">
             <Setter Property="Margin" Value="8"/>
             <Setter Property="Width" Value="660"/>
@@ -21,7 +21,7 @@
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         </Style>
 
-        <!-- Single field style (width + spacing only) -->
+        <!-- Single-field block -->
         <Style x:Key="SingleField" TargetType="StackPanel">
             <Setter Property="Margin" Value="8"/>
             <Setter Property="Width" Value="320"/>
@@ -49,58 +49,66 @@
 
             <!-- Content: a WrapPanel so groups and single fields wrap naturally -->
             <WrapPanel Focusable="False" FocusVisualStyle="{x:Null}">
+
+                <!-- ================== Paired groups with aligned rows ================== -->
                 <!-- TRUST + PLOT -->
                 <Grid Style="{StaticResource FieldGroup}" ShowGridLines="False">
+                    <Grid.RowDefinitions>
+                        <!-- Row 0: labels -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- Row 1: inputs -->
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="320"/>
                         <ColumnDefinition Width="20"/>
                         <ColumnDefinition Width="320"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0" Focusable="False" FocusVisualStyle="{x:Null}">
-                        <TextBlock Text="Trust" Style="{StaticResource LabelText}"/>
-                        <ComboBox Name="Rent_Trust_comboBox" Width="200"/>
-                    </StackPanel>
+                    <!-- Labels row -->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Trust" Style="{StaticResource LabelText}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Plot" Style="{StaticResource LabelText}"/>
 
-                    <StackPanel Grid.Column="2" Focusable="False" FocusVisualStyle="{x:Null}">
-                        <TextBlock Text="Plot" Style="{StaticResource LabelText}"/>
-                        <ComboBox Name="Rent_Plot_comboBox" Width="200"/>
-                    </StackPanel>
+                    <!-- Inputs row -->
+                    <ComboBox Grid.Row="1" Grid.Column="0" Name="Rent_Trust_comboBox" Width="200" VerticalAlignment="Top"/>
+                    <ComboBox Grid.Row="1" Grid.Column="2" Name="Rent_Plot_comboBox" Width="200" VerticalAlignment="Top"/>
                 </Grid>
 
                 <!-- SPACE + SPACE NO. -->
                 <Grid Style="{StaticResource FieldGroup}" ShowGridLines="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="320"/>
                         <ColumnDefinition Width="20"/>
                         <ColumnDefinition Width="320"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0" Focusable="False" FocusVisualStyle="{x:Null}">
-                        <TextBlock Text="Space" Style="{StaticResource LabelText}"/>
-                        <ComboBox Name="Rent_Space_comboBox" Width="200"/>
-                    </StackPanel>
+                    <!-- Labels row -->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Space" Style="{StaticResource LabelText}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Space No." Style="{StaticResource LabelText}"/>
 
-                    <StackPanel Grid.Column="2" Focusable="False" FocusVisualStyle="{x:Null}">
-                        <TextBlock Text="Space No." Style="{StaticResource LabelText}"/>
-                        <ComboBox Name="Rent_SpaceNo_comboBox" Width="200"/>
-                    </StackPanel>
+                    <!-- Inputs row -->
+                    <ComboBox Grid.Row="1" Grid.Column="0" Name="Rent_Space_comboBox" Width="200" VerticalAlignment="Top"/>
+                    <ComboBox Grid.Row="1" Grid.Column="2" Name="Rent_SpaceNo_comboBox" Width="200" VerticalAlignment="Top"/>
                 </Grid>
 
-                <!-- Remaining single fields -->
+                <!-- ================== Remaining single fields ================== -->
                 <StackPanel Style="{StaticResource SingleField}">
                     <TextBlock Text="Months" Style="{StaticResource LabelText}"/>
-                    <ComboBox Name="Rent_NumMonths_comboBox" Width="200"/>
+                    <ComboBox Name="Rent_NumMonths_comboBox" Width="200" VerticalAlignment="Top"/>
                 </StackPanel>
 
                 <StackPanel Style="{StaticResource SingleField}">
                     <TextBlock Text="From Date" Style="{StaticResource LabelText}"/>
-                    <DatePicker Name="Rent_FromDate_datePicker" Width="200"/>
+                    <DatePicker Name="Rent_FromDate_datePicker" Width="200" VerticalAlignment="Top"/>
                 </StackPanel>
 
                 <StackPanel Style="{StaticResource SingleField}">
                     <TextBlock Text="To Date" Style="{StaticResource LabelText}"/>
-                    <DatePicker Name="Rent_ToDate_datePicker" Width="200"/>
+                    <DatePicker Name="Rent_ToDate_datePicker" Width="200" VerticalAlignment="Top"/>
                 </StackPanel>
 
                 <StackPanel Margin="8" Width="660" Focusable="False" FocusVisualStyle="{x:Null}">
@@ -113,22 +121,22 @@
 
                 <StackPanel Style="{StaticResource SingleField}">
                     <TextBlock Text="Total Rent" Style="{StaticResource LabelText}"/>
-                    <TextBox Name="Rent_TotalRent_textBox" Width="200"/>
+                    <TextBox Name="Rent_TotalRent_textBox" Width="200" VerticalAlignment="Top"/>
                 </StackPanel>
 
                 <StackPanel Style="{StaticResource SingleField}">
                     <TextBlock Text="Total Water" Style="{StaticResource LabelText}"/>
-                    <TextBox Name="Rent_TotalWater_textBox" Width="200"/>
+                    <TextBox Name="Rent_TotalWater_textBox" Width="200" VerticalAlignment="Top"/>
                 </StackPanel>
 
                 <StackPanel Style="{StaticResource SingleField}">
                     <TextBlock Text="Rent Arrears" Style="{StaticResource LabelText}"/>
-                    <TextBox Name="Rent_RentArears_textBox" Width="200"/>
+                    <TextBox Name="Rent_RentArears_textBox" Width="200" VerticalAlignment="Top"/>
                 </StackPanel>
 
                 <StackPanel Style="{StaticResource SingleField}">
                     <TextBlock Text="Water Arrears" Style="{StaticResource LabelText}"/>
-                    <TextBox Name="Rent_WaterArears_textBox" Width="200"/>
+                    <TextBox Name="Rent_WaterArears_textBox" Width="200" VerticalAlignment="Top"/>
                 </StackPanel>
 
                 <!-- Buttons row (wide) -->

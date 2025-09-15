@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrustApplication"
         xmlns:views="clr-namespace:TrustApplication.Views"
+        xmlns:behaviors="clr-namespace:TrustApplication.Behaviors"
         mc:Ignorable="d"
         Title="Trust Application" Height="720" Width="1120" MinHeight="540" MinWidth="900"
         WindowStartupLocation="CenterScreen"
@@ -67,7 +68,8 @@
 
                 <!-- Scrollable group of collapsible sections -->
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel>
+                    <!-- Enable accordion behavior on the container -->
+                    <StackPanel behaviors:Accordion.IsEnabled="True">
                         <!-- OPERATIONS -->
                         <Expander Header="Rent" IsExpanded="True">
                             <StackPanel Margin="8,4,0,8">

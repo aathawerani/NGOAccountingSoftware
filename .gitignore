@@ -22,3 +22,4 @@ artifacts/
 # Rider/Resharper
 _ReSharper*/
 *.[Rr]e[Ss]harper
+*.bak

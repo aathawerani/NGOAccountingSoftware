@@ -7,7 +7,7 @@ namespace TrustApplication.Views
         public PlaceholderView(string name)
         {
             InitializeComponent();
-            Label.Text = $"{name} - coming soon";
+            Label.Text = string.Format("{0} - coming soon", name);
         }
     }
 }

@@ -1,4 +1,5 @@
 using TrustApplication.Views;
+using TrustApplication.ViewModels;
 
 namespace TrustApplication.ViewModels
 {
@@ -15,7 +16,7 @@ namespace TrustApplication.ViewModels
 
         public Section CurrentSection
         {
-            get => _currentSection;
+            get { return _currentSection; }
             set
             {
                 if (_currentSection != value)
@@ -29,13 +30,13 @@ namespace TrustApplication.ViewModels
 
         public object CurrentView
         {
-            get => _currentView;
+            get { return _currentView; }
             private set { _currentView = value; OnPropertyChanged(); }
         }
 
         public string CurrentSectionTitle
         {
-            get => _currentSectionTitle;
+            get { return _currentSectionTitle; }
             private set { _currentSectionTitle = value; OnPropertyChanged(); }
         }
 
@@ -45,8 +46,8 @@ namespace TrustApplication.ViewModels
             {
                 // Operations
                 case Section.Rent:
-                    CurrentView = new RentView();
-                    CurrentSectionTitle = "Receipt";
+                    CurrentView = new RentView { DataContext = new RentViewModel() };
+                    CurrentSectionTitle = "Rent";
                     break;
                 case Section.Tenants:
                     CurrentView = new TenantView();
@@ -79,7 +80,7 @@ namespace TrustApplication.ViewModels
                     break;
 
                 default:
-                    CurrentView = new RentView();
+                    CurrentView = new RentView { DataContext = new RentViewModel() };
                     CurrentSectionTitle = "Rent";
                     break;
             }

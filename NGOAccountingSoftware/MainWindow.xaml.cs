@@ -1,5 +1,6 @@
 using System;
 using System.Windows;
+using System.Windows.Input;
 using TrustApplication.ViewModels;
 
 namespace TrustApplication
@@ -14,6 +15,15 @@ namespace TrustApplication
             System.Windows.Input.Stylus.SetIsPressAndHoldEnabled(this, false);
             System.Windows.Input.Stylus.SetIsTouchFeedbackEnabled(this, false);
             System.Windows.Input.Stylus.SetIsFlicksEnabled(this, false);
+
+            if (this == null) return;
+
+            // Turn off WPF stylus feedback at the window level
+            Stylus.SetIsPressAndHoldEnabled(this, false);
+            Stylus.SetIsTapFeedbackEnabled(this, false);
+            Stylus.SetIsTouchFeedbackEnabled(this, false);
+            Stylus.SetIsFlicksEnabled(this, false);
+
         }
 
         protected override void OnSourceInitialized(EventArgs e)

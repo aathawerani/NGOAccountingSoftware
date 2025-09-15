@@ -4,143 +4,154 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             d:DesignHeight="600" d:DesignWidth="900">
-    <UserControl.Resources>
-        <Style x:Key="FormCard" TargetType="Border">
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="Margin" Value="8"/>
-            <Setter Property="CornerRadius" Value="8"/>
-            <Setter Property="BorderBrush" Value="#DDD"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Width" Value="320"/>
-        </Style>
+             d:DesignHeight="800" d:DesignWidth="1200">
 
+    <UserControl.Resources>
+        <!-- Label text -->
         <Style x:Key="LabelText" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="0,0,0,6"/>
         </Style>
+
+        <!-- Lightweight pair group (no borders). We also turn off focus visuals just in case a theme adds them. -->
+        <Style x:Key="FieldGroup" TargetType="Grid">
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Width" Value="660"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        </Style>
+
+        <!-- Single field style (width + spacing only) -->
+        <Style x:Key="SingleField" TargetType="StackPanel">
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Width" Value="320"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        </Style>
+
+        <!-- Buttons spacing -->
+        <Style x:Key="BarButton" TargetType="Button">
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="MinWidth" Value="90"/>
+        </Style>
     </UserControl.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <DockPanel LastChildFill="True" Margin="8">
-            <TextBlock DockPanel.Dock="Top" Text="{Binding Title}" FontSize="18" FontWeight="Bold" Margin="8,0,8,12"/>
+        <DockPanel LastChildFill="True" Margin="16">
 
-            <WrapPanel ItemHeight="Auto" ItemWidth="320">
-                <!-- Trust -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Trust"/>
-                        <ComboBox Name="Rent_Trust_comboBox" MinWidth="200"/>
-                    </StackPanel>
-                </Border>
+            <!-- Title -->
+            <TextBlock DockPanel.Dock="Top"
+                       Text="{Binding Title}"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Margin="4,0,4,16"/>
 
-                <!-- Plot -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Plot"/>
-                        <ComboBox Name="Rent_Plot_comboBox" MinWidth="200"/>
-                    </StackPanel>
-                </Border>
+            <!-- Content: a WrapPanel so groups and single fields wrap naturally -->
+            <WrapPanel Focusable="False" FocusVisualStyle="{x:Null}">
+                <!-- TRUST + PLOT -->
+                <Grid Style="{StaticResource FieldGroup}" ShowGridLines="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="320"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="320"/>
+                    </Grid.ColumnDefinitions>
 
-                <!-- Space -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Space"/>
-                        <ComboBox Name="Rent_Space_comboBox" MinWidth="200"/>
+                    <StackPanel Grid.Column="0" Focusable="False" FocusVisualStyle="{x:Null}">
+                        <TextBlock Text="Trust" Style="{StaticResource LabelText}"/>
+                        <ComboBox Name="Rent_Trust_comboBox" Width="200"/>
                     </StackPanel>
-                </Border>
 
-                <!-- Space No -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Space No."/>
-                        <ComboBox Name="Rent_SpaceNo_comboBox" MinWidth="200"/>
+                    <StackPanel Grid.Column="2" Focusable="False" FocusVisualStyle="{x:Null}">
+                        <TextBlock Text="Plot" Style="{StaticResource LabelText}"/>
+                        <ComboBox Name="Rent_Plot_comboBox" Width="200"/>
                     </StackPanel>
-                </Border>
+                </Grid>
 
-                <!-- Months -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Months"/>
-                        <ComboBox Name="Rent_NumMonths_comboBox" MinWidth="200"/>
-                    </StackPanel>
-                </Border>
+                <!-- SPACE + SPACE NO. -->
+                <Grid Style="{StaticResource FieldGroup}" ShowGridLines="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="320"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="320"/>
+                    </Grid.ColumnDefinitions>
 
-                <!-- Date From -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="From Date"/>
-                        <DatePicker Name="Rent_FromDate_datePicker"/>
+                    <StackPanel Grid.Column="0" Focusable="False" FocusVisualStyle="{x:Null}">
+                        <TextBlock Text="Space" Style="{StaticResource LabelText}"/>
+                        <ComboBox Name="Rent_Space_comboBox" Width="200"/>
                     </StackPanel>
-                </Border>
 
-                <!-- Date To -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="To Date"/>
-                        <DatePicker Name="Rent_ToDate_datePicker"/>
+                    <StackPanel Grid.Column="2" Focusable="False" FocusVisualStyle="{x:Null}">
+                        <TextBlock Text="Space No." Style="{StaticResource LabelText}"/>
+                        <ComboBox Name="Rent_SpaceNo_comboBox" Width="200"/>
                     </StackPanel>
-                </Border>
+                </Grid>
 
-                <!-- Particulars (double width) -->
-                <Border Style="{StaticResource FormCard}" Width="656">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Particulars"/>
-                        <TextBox Name="Rent_RentParticulars_textBox" AcceptsReturn="True" Height="80" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Border>
+                <!-- Remaining single fields -->
+                <StackPanel Style="{StaticResource SingleField}">
+                    <TextBlock Text="Months" Style="{StaticResource LabelText}"/>
+                    <ComboBox Name="Rent_NumMonths_comboBox" Width="200"/>
+                </StackPanel>
 
-                <!-- Rent -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Total Rent"/>
-                        <TextBox Name="Rent_TotalRent_textBox"/>
-                    </StackPanel>
-                </Border>
+                <StackPanel Style="{StaticResource SingleField}">
+                    <TextBlock Text="From Date" Style="{StaticResource LabelText}"/>
+                    <DatePicker Name="Rent_FromDate_datePicker" Width="200"/>
+                </StackPanel>
 
-                <!-- Water -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Total Water"/>
-                        <TextBox Name="Rent_TotalWater_textBox"/>
-                    </StackPanel>
-                </Border>
+                <StackPanel Style="{StaticResource SingleField}">
+                    <TextBlock Text="To Date" Style="{StaticResource LabelText}"/>
+                    <DatePicker Name="Rent_ToDate_datePicker" Width="200"/>
+                </StackPanel>
 
-                <!-- Arrears Rent -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Rent Arrears"/>
-                        <TextBox Name="Rent_RentArears_textBox"/>
-                    </StackPanel>
-                </Border>
+                <StackPanel Margin="8" Width="660" Focusable="False" FocusVisualStyle="{x:Null}">
+                    <TextBlock Text="Particulars" Style="{StaticResource LabelText}"/>
+                    <TextBox Name="Rent_RentParticulars_textBox"
+                             Height="80"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"/>
+                </StackPanel>
 
-                <!-- Arrears Water -->
-                <Border Style="{StaticResource FormCard}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Water Arrears"/>
-                        <TextBox Name="Rent_WaterArears_textBox"/>
-                    </StackPanel>
-                </Border>
+                <StackPanel Style="{StaticResource SingleField}">
+                    <TextBlock Text="Total Rent" Style="{StaticResource LabelText}"/>
+                    <TextBox Name="Rent_TotalRent_textBox" Width="200"/>
+                </StackPanel>
 
-                <!-- Buttons (full width on wrap) -->
-                <Border Style="{StaticResource FormCard}" Width="656">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Name="Rent_button" Content="New" Padding="16,8" Margin="0,0,8,0"/>
-                        <Button Name="Rent_Updatebutton" Content="Update" Padding="16,8" Margin="0,0,8,0"/>
-                        <Button Name="Rent_Clear" Content="Clear" Padding="16,8" Margin="0,0,8,0"/>
-                        <Button Name="Rent_Printbutton" Content="Print" Padding="16,8" Margin="0,0,8,0"/>
-                        <Button Content="Calculate" Padding="16,8"/>
-                    </StackPanel>
-                </Border>
+                <StackPanel Style="{StaticResource SingleField}">
+                    <TextBlock Text="Total Water" Style="{StaticResource LabelText}"/>
+                    <TextBox Name="Rent_TotalWater_textBox" Width="200"/>
+                </StackPanel>
 
-                <!-- Grid Results -->
-                <Border Style="{StaticResource FormCard}" Width="1000">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource LabelText}" Text="Records"/>
-                        <DataGrid Name="Rent_Grid" AutoGenerateColumns="True" Height="240"/>
+                <StackPanel Style="{StaticResource SingleField}">
+                    <TextBlock Text="Rent Arrears" Style="{StaticResource LabelText}"/>
+                    <TextBox Name="Rent_RentArears_textBox" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource SingleField}">
+                    <TextBlock Text="Water Arrears" Style="{StaticResource LabelText}"/>
+                    <TextBox Name="Rent_WaterArears_textBox" Width="200"/>
+                </StackPanel>
+
+                <!-- Buttons row (wide) -->
+                <StackPanel Margin="8" Orientation="Vertical" Width="660" Focusable="False" FocusVisualStyle="{x:Null}">
+                    <TextBlock Text="Actions" Style="{StaticResource LabelText}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="Rent_button" Content="New" Style="{StaticResource BarButton}"/>
+                        <Button Name="Rent_Updatebutton" Content="Update" Style="{StaticResource BarButton}"/>
+                        <Button Name="Rent_Clear" Content="Clear" Style="{StaticResource BarButton}"/>
+                        <Button Name="Rent_Printbutton" Content="Print" Style="{StaticResource BarButton}"/>
+                        <Button Content="Calculate" Style="{StaticResource BarButton}"/>
                     </StackPanel>
-                </Border>
+                </StackPanel>
+
+                <!-- Records Grid (wider) -->
+                <StackPanel Margin="8" Width="1000" Focusable="False" FocusVisualStyle="{x:Null}">
+                    <TextBlock Text="Records" Style="{StaticResource LabelText}"/>
+                    <DataGrid Name="Rent_Grid"
+                              AutoGenerateColumns="True"
+                              Height="240"
+                              CanUserAddRows="False"
+                              IsReadOnly="True"/>
+                </StackPanel>
 
             </WrapPanel>
         </DockPanel>

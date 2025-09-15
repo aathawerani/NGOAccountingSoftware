@@ -66,17 +66,29 @@ namespace TrustApplication.ViewModels
 
 
                 // Administration
-                case Section.Settings:
-                    CurrentView = new PlaceholderView("Settings");
-                    CurrentSectionTitle = "Settings";
+                case Section.Accounts:
+                    CurrentView = new AccountsView();
+                    CurrentSectionTitle = "Manual Entries";
                     break;
-                case Section.Users:
-                    CurrentView = new PlaceholderView("Users");
-                    CurrentSectionTitle = "Users";
+                case Section.Invest:
+                    CurrentView = new InvestView();
+                    CurrentSectionTitle = "Investments";
                     break;
-                case Section.Backup:
-                    CurrentView = new PlaceholderView("Backup / Restore");
-                    CurrentSectionTitle = "Backup / Restore";
+                case Section.Cash:
+                    CurrentView = new CashView();
+                    CurrentSectionTitle = "Cash";
+                    break;
+                case Section.Receivables:
+                    CurrentView = new ReceiveView();
+                    CurrentSectionTitle = "Receivables";
+                    break;
+                case Section.Import:
+                    CurrentView = new ImportView();
+                    CurrentSectionTitle = "Import";
+                    break;
+                case Section.Export:
+                    CurrentView = new ReportsView();
+                    CurrentSectionTitle = "Exports";
                     break;
 
                 default:

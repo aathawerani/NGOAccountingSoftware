@@ -11,8 +11,13 @@ namespace TrustApplication
         Voucher = 11,
 
         // Administration
-        Settings = 20,
-        Users = 21,
-        Backup = 22
+        Accounts = 20,
+        Invest = 21,
+        Cash = 22,
+
+        Receivables = 30,
+        Import = 31,
+        Export = 32
+
     }
 }

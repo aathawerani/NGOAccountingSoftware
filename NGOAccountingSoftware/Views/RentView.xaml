@@ -7,35 +7,40 @@
              d:DesignHeight="800" d:DesignWidth="1200"
              UseLayoutRounding="True"
              SnapsToDevicePixels="True">
-
     <UserControl.Resources>
-        <!-- Label text -->
         <Style x:Key="LabelText" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Margin" Value="0,0,0,6"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
-
-        <!-- Button spacing -->
+        <Style x:Key="Text" TargetType="TextBox">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="Date" TargetType="DatePicker">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="Combo" TargetType="ComboBox">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
         <Style x:Key="BarButton" TargetType="Button">
             <Setter Property="Margin" Value="0,0,8,0"/>
             <Setter Property="Padding" Value="10,6"/>
             <Setter Property="MinWidth" Value="90"/>
         </Style>
     </UserControl.Resources>
-
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <DockPanel LastChildFill="True" Margin="16">
-
-            <!-- Title -->
-            <TextBlock DockPanel.Dock="Top"
-                       Text="{Binding Title}"
-                       FontSize="22"
-                       FontWeight="Bold"
-                       Margin="4,0,4,16"/>
-
-            <!-- Two side-by-side wrap columns -->
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
@@ -43,157 +48,184 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
-                <!-- LEFT COLUMN: WrapPanel -->
                 <WrapPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,0">
-                    <!-- Field blocks are simple 2-row Grids so label and input align -->
-                    <!-- Trust -->
-                    <Grid Width="300" Margin="6">
+                    <Grid Width="170" Margin="6">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Trust" Style="{StaticResource LabelText}"/>
-                        <ComboBox Grid.Row="1" Name="Rent_Trust_comboBox" Width="200" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Row="0" Text="Trust" Width="40" Style="{StaticResource LabelText}"/>
+                        <ComboBox Margin="40,0,0,0" Width="120" Grid.Row="0" Style="{StaticResource Combo}" x:Name="Rent_Trust_comboBox" SelectionChanged="Rent_Trust_comboBox_SelectionChanged"/>
                     </Grid>
-
-                    <!-- Plot -->
-                    <Grid Width="300" Margin="6">
+                    <Grid Width="110" Margin="6">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Plot" Style="{StaticResource LabelText}"/>
-                        <ComboBox Grid.Row="1" Name="Rent_Plot_comboBox" Width="200" HorizontalAlignment="Left"/>
+                        <TextBlock Width="30" Grid.Row="0" Text="Plot" Style="{StaticResource LabelText}"/>
+                        <ComboBox Width="70" Margin="35,0,0,0" Grid.Row="0" Style="{StaticResource Combo}" x:Name="Rent_Plot_comboBox" SelectionChanged="Rent_Plot_comboBox_SelectionChanged"/>
                     </Grid>
-
-                    <!-- Months -->
-                    <Grid Width="300" Margin="6">
+                    <Grid Width="130" Margin="6">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Months" Style="{StaticResource LabelText}"/>
-                        <ComboBox Grid.Row="1" Name="Rent_NumMonths_comboBox" Width="200" HorizontalAlignment="Left"/>
+                        <TextBlock Width="30" Grid.Row="0" Text="Type" Style="{StaticResource LabelText}"/>
+                        <ComboBox Margin="40,0,0,0" Width="90" Grid.Row="0" Style="{StaticResource Combo}" x:Name="Rent_Space_comboBox" SelectionChanged="Rent_Space_comboBox_SelectionChanged"/>
                     </Grid>
-
-                    <!-- From Date -->
-                    <Grid Width="300" Margin="6">
+                    <Grid Width="90" Margin="6">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="From Date" Style="{StaticResource LabelText}"/>
-                        <DatePicker Grid.Row="1" Name="Rent_FromDate_datePicker" Width="200" HorizontalAlignment="Left"/>
-                    </Grid>
-
-                    <!-- To Date -->
-                    <Grid Width="300" Margin="6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="To Date" Style="{StaticResource LabelText}"/>
-                        <DatePicker Grid.Row="1" Name="Rent_ToDate_datePicker" Width="200" HorizontalAlignment="Left"/>
+                        <TextBlock Width="20" Grid.Row="0" Text="No." Style="{StaticResource LabelText}"/>
+                        <ComboBox Margin="30,0,0,0" Width="50" Grid.Row="0" Style="{StaticResource Combo}" x:Name="Rent_SpaceNo_comboBox" SelectionChanged="Rent_SpaceNo_comboBox_SelectionChanged"/>
                     </Grid>
                 </WrapPanel>
-
-                <!-- RIGHT COLUMN: WrapPanel -->
                 <WrapPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,0">
-                    <!-- Space -->
-                    <Grid Width="300" Margin="6">
+                    <Grid Width="150" Margin="6">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Space" Style="{StaticResource LabelText}"/>
-                        <ComboBox Grid.Row="1" Name="Rent_Space_comboBox" Width="200" HorizontalAlignment="Left"/>
+                        <TextBlock Width="50" Grid.Row="0" Text="Serial" Style="{StaticResource LabelText}"/>
+                        <TextBox Margin="50,0,0,0" Width="100" Grid.Row="0"  Style="{StaticResource Text}" x:Name="Rent_SerialNo_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.No}" />
                     </Grid>
-
-                    <!-- Space No. -->
-                    <Grid Width="300" Margin="6">
+                    <Grid Width="200" Margin="6">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Space No." Style="{StaticResource LabelText}"/>
-                        <ComboBox Grid.Row="1" Name="Rent_SpaceNo_comboBox" Width="200" HorizontalAlignment="Left"/>
+                        <TextBlock Width="40" Grid.Row="0" Text="Date" Style="{StaticResource LabelText}"/>
+                        <DatePicker Margin="40,-2,0,2" Width="120" Grid.Row="0" Style="{StaticResource Date}" x:Name="Rent_Date" SelectedDate="{Binding SelectedItem.Date, ElementName=Accounts_Grid}"/>
                     </Grid>
-
-                    <!-- Total Rent -->
-                    <Grid Width="300" Margin="6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Total Rent" Style="{StaticResource LabelText}"/>
-                        <TextBox Grid.Row="1" Name="Rent_TotalRent_textBox" Width="200" HorizontalAlignment="Left"/>
-                    </Grid>
-
-                    <!-- Total Water -->
-                    <Grid Width="300" Margin="6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Total Water" Style="{StaticResource LabelText}"/>
-                        <TextBox Grid.Row="1" Name="Rent_TotalWater_textBox" Width="200" HorizontalAlignment="Left"/>
-                    </Grid>
-
-                    <!-- Rent Arrears -->
-                    <Grid Width="300" Margin="6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Rent Arrears" Style="{StaticResource LabelText}"/>
-                        <TextBox Grid.Row="1" Name="Rent_RentArears_textBox" Width="200" HorizontalAlignment="Left"/>
-                    </Grid>
-
-                    <!-- Water Arrears -->
-                    <Grid Width="300" Margin="6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Water Arrears" Style="{StaticResource LabelText}"/>
-                        <TextBox Grid.Row="1" Name="Rent_WaterArears_textBox" Width="200" HorizontalAlignment="Left"/>
-                    </Grid>
-
-                    <!-- Particulars (wider block) -->
-                    <Grid Width="616" Margin="6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Particulars" Style="{StaticResource LabelText}"/>
-                        <TextBox Grid.Row="1" Name="Rent_RentParticulars_textBox"
-                                 Height="80" AcceptsReturn="True" TextWrapping="Wrap"/>
-                    </Grid>
-
-                    <!-- Actions (wider block) -->
-                    <StackPanel Width="616" Margin="6">
-                        <TextBlock Text="Actions" Style="{StaticResource LabelText}"/>
-                        <StackPanel Orientation="Horizontal">
-                            <Button Name="Rent_button" Content="New" Style="{StaticResource BarButton}"/>
-                            <Button Name="Rent_Updatebutton" Content="Update" Style="{StaticResource BarButton}"/>
-                            <Button Name="Rent_Clear" Content="Clear" Style="{StaticResource BarButton}"/>
-                            <Button Name="Rent_Printbutton" Content="Print" Style="{StaticResource BarButton}"/>
-                            <Button Content="Calculate" Style="{StaticResource BarButton}"/>
-                        </StackPanel>
-                    </StackPanel>
                 </WrapPanel>
-
-                <!-- Records Grid spanning both columns -->
-                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="6">
+                <TextBlock Margin="7,0,5,0" Grid.Row="1" Grid.Column="0" Width="70" Text="Name" Style="{StaticResource LabelText}"/>
+                <TextBox Margin="50,0,5,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" MinWidth="800" Style="{StaticResource Text}" x:Name="Rent_Name_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.Name}"/>
+                <TextBox Visibility="Hidden" x:Name="Rent_ID_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.ID}" />
+                <WrapPanel Grid.Row="2" Grid.Column="0"  Margin="0,0,8,0">
+                    <Grid Width="140" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Width="40" Text="From" Style="{StaticResource LabelText}"/>
+                        <ComboBox Margin="40,0,0,0" Width="40" Grid.Row="0" Style="{StaticResource Combo}" x:Name="Rent_FromM_comboBox" SelectionChanged="CacluateNumMonths" />
+                        <ComboBox Margin="90,0,0,0" Width="40" Grid.Row="0" Style="{StaticResource Combo}" x:Name="Rent_FromY_comboBox" SelectionChanged="CacluateNumMonths" />
+                    </Grid>
+                    <Grid Width="130" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Width="60" Text="Months" Style="{StaticResource LabelText}"/>
+                        <ComboBox Margin="60,0,0,0" Width="60" Grid.Row="0" Style="{StaticResource Combo}" x:Name="Rent_NumMonths_comboBox" SelectionChanged="Rent_NumMonths_comboBox_SelectionChanged"/>
+                    </Grid>
+                    <Grid Width="200" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Width="20" Text="To" Style="{StaticResource LabelText}"/>
+                        <ComboBox Grid.Row="0" Margin="30,0,0,0" Width="60"  x:Name="Rent_ToM_comboBox" SelectionChanged="CacluateNumMonths" Style="{StaticResource Combo}"/>
+                        <ComboBox Grid.Row="0" Margin="100,0,0,0" Width="60"  x:Name="Rent_ToY_comboBox" SelectionChanged="CacluateNumMonths" Style="{StaticResource Combo}"/>
+                    </Grid>
+                </WrapPanel>
+                <WrapPanel Grid.Row="2" Grid.Column="1"  Margin="0,0,0,8">
+                    <Grid Width="90" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Width="40" Text="Rent" Style="{StaticResource LabelText}"/>
+                        <TextBox Grid.Row="0" Margin="40,0,0,0" Width="40" x:Name="Rent_MonthlyRent_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.MRent}" TextAlignment="Right" TextChanged="CalculateRent"/>
+                    </Grid>
+                    <Grid Width="90" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Width="40" Text="Water" Style="{StaticResource LabelText}"/>
+                        <TextBox Grid.Row="0" Margin="40,0,0,0" Width="40" x:Name="Rent_MonthlyWater_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WCharges}" TextAlignment="Right" TextChanged="CalculateRent"/>
+                    </Grid>
+                    <Grid Width="150" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Width="40" Text="CNIC" Style="{StaticResource LabelText}"/>
+                        <TextBox Grid.Row="0" Margin="40,0,0,0" Width="100" x:Name="Rent_CNIC_textBox"/>
+                    </Grid>
+                </WrapPanel>
+                <WrapPanel Grid.Row="3" Grid.Column="0"  Margin="8,0,0,0">
+                    <Grid Width="110" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Margin="0,20,0,0" Orientation="Vertical">
+                                <TextBlock Grid.Row="0" Width="40" Text="Rent" Style="{StaticResource LabelText}"/>
+                                <TextBlock Grid.Row="0" Width="40" Text="Water" Style="{StaticResource LabelText}"/>
+                                <TextBlock Grid.Row="0" Width="40" Text="Arears" Style="{StaticResource LabelText}"/>
+                                <TextBlock Grid.Row="0" Width="40" Text="Water" Style="{StaticResource LabelText}"/>
+                                <TextBlock Grid.Row="0" Width="40" Text="Total" Style="{StaticResource LabelText}"/>
+                                <TextBlock Grid.Row="0" Width="40" Text="Paid" Style="{StaticResource LabelText}"/>
+                            </StackPanel>
+                            <TextBlock Text="Period" Style="{StaticResource LabelText}"/>
+                            <StackPanel Margin="-30,20,0,0" Orientation="Vertical">
+                                <TextBox Grid.Row="0" Width="50" x:Name="Rent_TotalRent_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.TotalRent}" TextAlignment="Right" TextChanged="Rent_TotalRent_textBox_TextChanged"/>
+                                <TextBox Grid.Row="0" Width="50" x:Name="Rent_TotalWater_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.TotalWCharges}" TextAlignment="Right" TextChanged="Rent_TotalWater_textBox_TextChanged"/>
+                                <TextBox Grid.Row="0" Width="50" x:Name="Rent_RentArears_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RArears}" TextAlignment="Right" TextChanged="Rent_RentArears_textBox_TextChanged"/>
+                                <TextBox Grid.Row="0" Width="50" x:Name="Rent_WaterArears_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WArears}" TextAlignment="Right" TextChanged="Rent_WaterArears_textBox_TextChanged"/>
+                                <TextBox Grid.Row="0" Width="50" x:Name="Rent_TotalAmount_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.Total}" TextAlignment="Right"/>
+                                <TextBox Grid.Row="0" Width="50" x:Name="Rent_TotalPaid_textBox" Text="{Binding SelectedItem.Total, ElementName=Rent_Grid}" TextAlignment="Right"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Width="210" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Particulars" Style="{StaticResource LabelText}"/>
+                            <StackPanel Margin="-60,20,0,0" Orientation="Vertical">
+                                <TextBox Grid.Row="0" Width="200" x:Name="Rent_RentParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RPart}" TextChanged="Rent_RentParticulars_textBox_TextChanged"/>
+                                <TextBox Grid.Row="0" Width="200" x:Name="Rent_WaterParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WPart}"/>
+                                <TextBox Grid.Row="0" Width="200" x:Name="Rent_RentArearsParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.RAPart}"/>
+                                <TextBox Grid.Row="0" Width="200" x:Name="Rent_WaterArearsParticulars_textBox" Text="{Binding ElementName=Rent_Grid, Path=SelectedItem.WAPart}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </WrapPanel>
+                <WrapPanel Grid.Row="3" Grid.Column="1"  Margin="0,0,8,0">
+                    <Grid Width="220" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Width="120" Text="Payment Mode" Style="{StaticResource LabelText}"/>
+                        <TextBox Grid.Row="0" Margin="90,0,0,0" Width="100" x:Name="Rent_PaymentMode"/>
+                    </Grid>
+                    <Grid Width="220" Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Width="80" Text="Cheque No." Style="{StaticResource LabelText}"/>
+                        <TextBox Grid.Row="0" Margin="40,0,0,0" Width="100" x:Name="Rent_BankReference_textBox"/>
+                    </Grid>
+                    <Grid Margin="6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <WrapPanel Margin="0,0,8,0">
+                            <Grid Width="200" Margin="6">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Button Grid.Column="0" Width="80" HorizontalAlignment="Left" x:Name="Rent_Updatebutton" Content="Update" Click="Rent_Updatebutton_Click" Style="{StaticResource BarButton}"/>
+                                <Button Grid.Column="1" Margin="90,0,0,0" Width="80" x:Name="Rent_Clear" Content="Clear" Click="Rent_Clear_Click" Style="{StaticResource BarButton}"/>
+                            </Grid>
+                            <Grid Width="200" Margin="6">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Button Grid.Column="0" Width="80" HorizontalAlignment="Left" x:Name="Rent_Printbutton" Content="Print" Click="Rent_Printbutton_Click" Style="{StaticResource BarButton}"/>
+                                <Button Grid.Column="1" Margin="90,0,0,0" Width="80" x:Name="Rent_button" Content="Generate" Click="Rent_button_Click" Style="{StaticResource BarButton}"/>
+                            </Grid>
+                        </WrapPanel>
+                    </Grid>
+                </WrapPanel>
+                <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="6">
                     <TextBlock Text="Records" Style="{StaticResource LabelText}"/>
-                    <DataGrid Name="Rent_Grid"
-                              AutoGenerateColumns="True"
-                              Height="240"
-                              CanUserAddRows="False"
-                              IsReadOnly="True"/>
+                    <DataGrid x:Name="Rent_Grid" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="Rent_Grid_SelectionChanged" Height="240" CanUserAddRows="False" IsReadOnly="True"/>
                 </StackPanel>
-
             </Grid>
         </DockPanel>
     </ScrollViewer>

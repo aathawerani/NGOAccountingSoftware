@@ -42,15 +42,16 @@ namespace TrustApplication.Views
 
         private void RentTab()
         {
-            /*rentUI.SetRentControls(Rent_Trust_comboBox, Rent_FromM_comboBox, Rent_FromY_comboBox, Rent_ToM_comboBox,
-                Rent_ToY_comboBox, Rent_NumMonths_comboBox, Rent_Date, Rent_Grid, Rent_Plot_comboBox, Rent_Space_comboBox,
-                Rent_SpaceNo_comboBox, Rent_Name_textBox, Rent_MonthlyRent_textBox, Rent_MonthlyWater_textBox,
-                Rent_RentArears_textBox, Rent_WaterArears_textBox, Rent_TotalRent_textBox, Rent_TotalWater_textBox,
-                Rent_TotalAmount_textBox, Rent_SerialNo_textBox, Rent_CNIC_textBox, Rent_ID_textBox, Rent_PaymentMode,
+            rentUI.SetRentControls(Rent_Trust_comboBox, Rent_Plot_comboBox, Rent_Space_comboBox, Rent_SpaceNo_comboBox, 
+                Rent_SerialNo_textBox, Rent_Date, Rent_Name_textBox, Rent_FromM_comboBox, Rent_FromY_comboBox, 
+                Rent_ToM_comboBox, Rent_ToY_comboBox, Rent_NumMonths_comboBox, Rent_MonthlyRent_textBox, Rent_MonthlyWater_textBox, 
+                Rent_TotalRent_textBox, Rent_TotalWater_textBox, Rent_RentArears_textBox, Rent_WaterArears_textBox,
                 Rent_RentParticulars_textBox, Rent_WaterParticulars_textBox, Rent_RentArearsParticulars_textBox,
-                Rent_WaterArearsParticulars_textBox, Rent_BankReference_textBox, Tenant_Trust_comboBox, Tenant_Plot_comboBox,
-                Tenant_Grid, Rent_TotalPaid_textBox);
-            rentUI.RentTab();*/
+                Rent_WaterArearsParticulars_textBox
+                /*, Rent_Grid,
+                Rent_TotalAmount_textBox, Rent_CNIC_textBox, Rent_ID_textBox, Rent_PaymentMode, Rent_BankReference_textBox, Tenant_Trust_comboBox, Tenant_Plot_comboBox,
+                Tenant_Grid, Rent_TotalPaid_textBox*/);
+            rentUI.RentTab();
         }
         private void Rent_Clear_Click(object sender, RoutedEventArgs e)
         {

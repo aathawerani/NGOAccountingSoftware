@@ -23,46 +23,49 @@ namespace TrustApplication
         TextBox Rent_WaterParticulars_textBox; TextBox Rent_RentArearsParticulars_textBox; TextBox Rent_WaterArearsParticulars_textBox;
         TextBox Rent_BankReference_textBox; TextBox Rent_TotalPaid_textBox;
 
-        public void SetRentControls(ComboBox _Rent_Trust_comboBox, ComboBox _Rent_FromM_comboBox,
-            ComboBox _Rent_FromY_comboBox, ComboBox _Rent_ToM_comboBox, ComboBox _Rent_ToY_comboBox,
-            ComboBox _Rent_NumMonths_comboBox, DatePicker _Rent_Date, DataGrid _Rent_Grid, ComboBox _Rent_Plot_comboBox,
-            ComboBox _Rent_Space_comboBox, ComboBox _Rent_SpaceNo_comboBox, TextBox _Rent_Name_textBox,
-            TextBox _Rent_MonthlyRent_textBox, TextBox _Rent_MonthlyWater_textBox, TextBox _Rent_RentArears_textBox,
-            TextBox _Rent_WaterArears_textBox, TextBox _Rent_TotalRent_textBox, TextBox _Rent_TotalWater_textBox,
-            TextBox _Rent_TotalAmount_textBox, TextBox _Rent_SerialNo_textBox, TextBox _Rent_CNIC_textBox,
-            TextBox _Rent_ID_textBox, ComboBox _Rent_PaymentMode, TextBox _Rent_RentParticulars_textBox,
-            TextBox _Rent_WaterParticulars_textBox, TextBox _Rent_RentArearsParticulars_textBox, 
-            TextBox _Rent_WaterArearsParticulars_textBox, TextBox _Rent_BankReference_textBox, ComboBox _Tenant_Trust_comboBox, 
-            ComboBox _Tenant_Plot_comboBox, DataGrid _Tenant_Grid, TextBox _Rent_TotalPaid_textBox)
+        public void SetRentControls(ComboBox _Rent_Trust_comboBox, ComboBox _Rent_Plot_comboBox,
+            ComboBox _Rent_Space_comboBox, ComboBox _Rent_SpaceNo_comboBox, TextBox _Rent_SerialNo_textBox, 
+            DatePicker _Rent_Date, TextBox _Rent_Name_textBox, ComboBox _Rent_FromM_comboBox, ComboBox _Rent_FromY_comboBox, 
+            ComboBox _Rent_ToM_comboBox, ComboBox _Rent_ToY_comboBox, ComboBox _Rent_NumMonths_comboBox,
+            TextBox _Rent_MonthlyRent_textBox, TextBox _Rent_MonthlyWater_textBox, TextBox _Rent_TotalRent_textBox, 
+            TextBox _Rent_TotalWater_textBox, TextBox _Rent_RentArears_textBox, TextBox _Rent_WaterArears_textBox, 
+            TextBox _Rent_RentParticulars_textBox, TextBox _Rent_WaterParticulars_textBox, TextBox _Rent_RentArearsParticulars_textBox,
+            TextBox _Rent_WaterArearsParticulars_textBox
+            /*, DataGrid _Rent_Grid,
+            TextBox _Rent_TotalAmount_textBox, TextBox _Rent_CNIC_textBox,
+            TextBox _Rent_ID_textBox, ComboBox _Rent_PaymentMode, TextBox _Rent_BankReference_textBox, ComboBox _Tenant_Trust_comboBox, 
+            ComboBox _Tenant_Plot_comboBox, DataGrid _Tenant_Grid, TextBox _Rent_TotalPaid_textBox*/)
         {
-            Rent_Trust_comboBox = _Rent_Trust_comboBox; Rent_FromM_comboBox = _Rent_FromM_comboBox;
-            Rent_FromY_comboBox = _Rent_FromY_comboBox; Rent_ToM_comboBox = _Rent_ToM_comboBox;
-            Rent_ToY_comboBox = _Rent_ToY_comboBox; Rent_NumMonths_comboBox = _Rent_NumMonths_comboBox;
-            Rent_Date = _Rent_Date; Rent_Grid = _Rent_Grid; Rent_Plot_comboBox = _Rent_Plot_comboBox;
+            Rent_Trust_comboBox = _Rent_Trust_comboBox; Rent_Plot_comboBox = _Rent_Plot_comboBox;
             Rent_Space_comboBox = _Rent_Space_comboBox; Rent_SpaceNo_comboBox = _Rent_SpaceNo_comboBox;
-            Rent_Name_textBox = _Rent_Name_textBox; Rent_MonthlyRent_textBox = _Rent_MonthlyRent_textBox;
-            Rent_MonthlyWater_textBox = _Rent_MonthlyWater_textBox; Rent_RentArears_textBox = _Rent_RentArears_textBox;
-            Rent_WaterArears_textBox = _Rent_WaterArears_textBox; Rent_TotalRent_textBox = _Rent_TotalRent_textBox;
-            Rent_TotalWater_textBox = _Rent_TotalWater_textBox; Rent_TotalAmount_textBox = _Rent_TotalAmount_textBox;
-            Rent_SerialNo_textBox = _Rent_SerialNo_textBox; Rent_CNIC_textBox = _Rent_CNIC_textBox;
-            Rent_ID_textBox = _Rent_ID_textBox; Rent_PaymentMode = _Rent_PaymentMode;
+            Rent_SerialNo_textBox = _Rent_SerialNo_textBox; Rent_Date = _Rent_Date;
+            Rent_FromM_comboBox = _Rent_FromM_comboBox; Rent_FromY_comboBox = _Rent_FromY_comboBox; 
+            Rent_ToM_comboBox = _Rent_ToM_comboBox; Rent_ToY_comboBox = _Rent_ToY_comboBox; 
+            Rent_NumMonths_comboBox = _Rent_NumMonths_comboBox; Rent_Name_textBox = _Rent_Name_textBox;
+            Rent_MonthlyRent_textBox = _Rent_MonthlyRent_textBox; Rent_MonthlyWater_textBox = _Rent_MonthlyWater_textBox; 
+            Rent_RentArears_textBox = _Rent_RentArears_textBox; Rent_WaterArears_textBox = _Rent_WaterArears_textBox; 
+            Rent_TotalRent_textBox = _Rent_TotalRent_textBox; Rent_TotalWater_textBox = _Rent_TotalWater_textBox;
             Rent_RentParticulars_textBox = _Rent_RentParticulars_textBox; Rent_WaterParticulars_textBox = _Rent_WaterParticulars_textBox;
             Rent_RentArearsParticulars_textBox = _Rent_RentArearsParticulars_textBox;
             Rent_WaterArearsParticulars_textBox = _Rent_WaterArearsParticulars_textBox;
-            Rent_BankReference_textBox = _Rent_BankReference_textBox; Rent_TotalPaid_textBox = _Rent_TotalPaid_textBox;
+            /*Rent_Grid = _Rent_Grid;
+            Rent_TotalAmount_textBox = _Rent_TotalAmount_textBox;
+            Rent_CNIC_textBox = _Rent_CNIC_textBox;
+            Rent_ID_textBox = _Rent_ID_textBox; Rent_PaymentMode = _Rent_PaymentMode;
+            Rent_BankReference_textBox = _Rent_BankReference_textBox; Rent_TotalPaid_textBox = _Rent_TotalPaid_textBox;*/
         }
 
         public void RentTab()
         {
             Rent_Trust_comboBox.ItemsSource = bl.GetTrustNames();
-            string[] Months = bl.GetMonthNames();
+            /*string[] Months = bl.GetMonthNames();
             string[] NumMonths = bl.GetMonthNos();
             List<string> NumY = bl.GetRentYears();
             Rent_FromM_comboBox.ItemsSource = Months;
             Rent_FromY_comboBox.ItemsSource = NumY;
             Rent_ToM_comboBox.ItemsSource = Months;
             Rent_ToY_comboBox.ItemsSource = NumY;
-            Rent_NumMonths_comboBox.ItemsSource = NumMonths;
+            Rent_NumMonths_comboBox.ItemsSource = NumMonths;*/
         }
         public void InitializeRent()
         {
@@ -118,7 +121,7 @@ namespace TrustApplication
             int index = Rent_Trust_comboBox.SelectedIndex + 1;
             Rent_Plot_comboBox.ItemsSource = bl.GetPlots(index.ToString());
             Rent_Space_comboBox.ItemsSource = null;
-            Rent_PaymentMode.ItemsSource = null;
+            //Rent_PaymentMode.ItemsSource = null;
         }
         public void Rent_Plot_comboBox_SelectionChanged()
         {
@@ -135,9 +138,9 @@ namespace TrustApplication
             string PlotNo = Rent_Plot_comboBox.SelectedItem.ToString();
             Rent_Space_comboBox.ItemsSource = bl.GetSpaceType(TrustIndex.ToString(), PlotIndex.ToString());
             Rent_SpaceNo_comboBox.ItemsSource = null;
-            Rent_PaymentMode.ItemsSource = bl.GetRentContraAccounts(TrustIndex, PlotNo);
+            //Rent_PaymentMode.ItemsSource = bl.GetRentContraAccounts(TrustIndex, PlotNo);
             //Rent_PaymentMode.SelectedIndex = Rent_PaymentMode.Items.IndexOf(new KeyValuePair<string, string>("1", "CASH"));
-            Rent_PaymentMode.SelectedIndex = 1;
+            //Rent_PaymentMode.SelectedIndex = 1;
         }
 
         public void Rent_Space_comboBox_SelectionChanged()

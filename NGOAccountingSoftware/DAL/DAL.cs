@@ -12,7 +12,7 @@ namespace TrustApplication
 {
     class DAL : IDisposable
     {
-        DBConnection dbCon = DBConnection.Instance();
+        protected DBConnection dbCon = DBConnection.Instance();
         protected string DBName = "trustdb";
 
         public DAL()
